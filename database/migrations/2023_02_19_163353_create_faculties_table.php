@@ -15,7 +15,20 @@ class CreateFacultiesTable extends Migration
     {
         Schema::create('faculties', function (Blueprint $table) {
             $table->id();
+            $table->string('fac_code', 50)->unique()->index();
+//            $table->string('fac_name')->nullable();
+            $table->string('fac_title');
+            $table->string('fac_designtion');
+            $table->date('fac_join');
+            $table->date('fac_retirement');
+            $table->string('fac_phone',12);
+//            $table->string('fac_email');
+            $table->string('fac_status');
+            $table->longText('fac_description')->nullable();
+//            $table->unsignedBigInteger('created_by');
+//            $table->unsignedBigInteger('department_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

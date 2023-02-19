@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\{
     MailSettingController,
 };
 use App\Http\Controllers\department\DepartmentController;
+use App\Http\Controllers\createUser\CreateUserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,7 +66,11 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/department/edit/{id}',[DepartmentController::class,'edit'])->name('edit');
         Route::put('/department/edit/{id}',[DepartmentController::class,'update'])->name('update');
         Route::get('/department/delete/{id}',[DepartmentController::class,'destroy'])->name('destroy');
-
+        Route::get('/createuser',[CreateUserController::class,'index'])->name('usercreate.index');
+        Route::post('/createuser',[CreateUserController::class,'create'])->name('usercreate.create');
+        Route::get('/createuser/edit/{id}',[CreateUserController::class,'edit'])->name('usercreate.edit');
+        Route::put('/createuser/edit/{id}',[CreateUserController::class,'update'])->name('usercreate.update');
+        Route::get('/createuser/delete/{id}',[CreateUserController::class,'destroy'])->name('usercreate.destroy');
         Route::get('/profile',[ProfileController::class,'index'])->name('profile');
         Route::put('/profile-update',[ProfileController::class,'update'])->name('profile.update');
         Route::get('/mail',[MailSettingController::class,'index'])->name('mail.index');
