@@ -21,7 +21,7 @@ class AdminSeeder extends Seeder
             'name'=>'Admin',
             'email'=>'admin@admin.com',
             'password'=>bcrypt('password'),
-            'profile' => 'user.avif'
+            'profile' => 'admin.png'
         ]);
 
         $writer = User::create([
