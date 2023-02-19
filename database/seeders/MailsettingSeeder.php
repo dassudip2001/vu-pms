@@ -21,7 +21,7 @@ class MailsettingSeeder extends Seeder
             'mail_username'             =>'ed3caa94a48fd1',
             'mail_password'             =>'baf29d92154c72',
             'mail_encryption'           =>'tls',
-            'mail_from'                 => 'ajayyadavexpo@gmail.com',
+            'mail_from'                 => 'sudip5428@gmail.com',
         ]);
     }
 }

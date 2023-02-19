@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\{
     ProfileController,
     MailSettingController,
 };
-
+use App\Http\Controllers\department\DepartmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +27,7 @@ Route::get('/test-mail',function(){
     $message = "Testing mail";
 
     \Mail::raw('Hi, welcome!', function ($message) {
-      $message->to('ajayydavex@gmail.com')
+      $message->to('sudip5428@gmail.com')
         ->subject('Testing mail');
     });
 
@@ -59,6 +59,11 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('permissions','PermissionController');
         Route::resource('users','UserController');
         Route::resource('posts','PostController');
+        Route::get('/department',[DepartmentController::class,'index'])->name('index');
+        Route::post('/department',[DepartmentController::class,'create'])->name('create');
+        Route::get('/department/edit/{id}',[DepartmentController::class,'edit'])->name('edit');
+        Route::put('/department/edit/{id}',[DepartmentController::class,'update'])->name('update');
+        Route::get('/department/delete/{id}',[DepartmentController::class,'destroy'])->name('destroy');
 
         Route::get('/profile',[ProfileController::class,'index'])->name('profile');
         Route::put('/profile-update',[ProfileController::class,'update'])->name('profile.update');
