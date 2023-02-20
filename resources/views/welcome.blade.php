@@ -10,12 +10,11 @@
                 <div class="flex items-center">
                     <nav class="text-black text-lg hidden lg:flex items-center">
 
-                        @if(Route::has('admin.login'))
-                                <a href="{{ route('admin.login') }}" class="py-2 px-6 flex hover:text-blue-500">Admin</a>
-
+                        @if (Route::has('admin.login'))
+                            <a href="{{ route('admin.login') }}" class="py-2 px-2 flex hover:text-blue-500"><i class="fa-solid fa-user"></i>Login</a>
                         @endif
 
-                        @if (Route::has('login'))
+                        {{-- @if (Route::has('login'))
                             @auth('front')
                                 <a href="{{ url('/dashboard') }}" class="py-2 px-6 flex hover:text-blue-500">Dashboard</a>
                             @else
@@ -24,7 +23,7 @@
                                     <a href="{{ route('register') }}" class="ml-4 py-2 px-6 flex hover:text-blue-500">Register</a>
                                 @endif
                             @endauth
-                        @endif
+                        @endif --}}
                     </nav>
                     <button class="lg:hidden flex flex-col">
                         <span class="w-6 h-px bg-gray-900 mb-1"></span>
@@ -36,11 +35,17 @@
         </header>
         <div class="container mx-auto px-6 sm:px-12 flex flex-col-reverse sm:flex-row items-center">
             <div class="sm:w-2/5 flex flex-col items-start mt-8 sm:mt-0">
-                <h1 class="text-4xl lg:text-6xl leading-none mb-4"><strong class="font-black">Vidyasagar University</strong> </h1>
+                <h1 class="text-4xl lg:text-6xl leading-none mb-4"><strong class="font-black">Vidyasagar
+                        University</strong> </h1>
                 <p class="lg:text-lg mb-4 sm:mb-12">Welcome to Vidyasagar University</p>
-                <a href="#" class="font-semibold text-lg bg-blue-500 hover:bg-blue-400 text-white py-3 px-10 rounded-full">vidyasagar.ac.in</a>
+                <a href="vidyasagar.ac.in"
+                    class="font-semibold text-lg bg-blue-500 hover:bg-blue-400 text-white py-3 px-10 rounded-full">vidyasagar.ac.in</a>
+
+                {{-- @if (Route::has('admin.login'))
+                    <a href="{{ route('admin.login') }}" class="py-2 px-6 flex hover:text-blue-500">Login</a>
+                @endif --}}
             </div>
-           {{-- roted image --}}
+            {{-- roted image --}}
         </div>
     </main>
 

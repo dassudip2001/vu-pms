@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\BudgetHead;
+namespace App\Http\Controllers\FundingAgencies;
 
 use App\Http\Controllers\Controller;
-use App\Models\BudgetHead;
+use App\Models\FundingAgency;
 use Exception;
 use Illuminate\Http\Request;
 
-class BudgetHeadController extends Controller
+class FundingAgenciesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class BudgetHeadController extends Controller
     public function index()
     {
         try {
-            $budget=BudgetHead::all();
-            return view('budget.create',compact('budget'));
+            $agency=FundingAgency::all();
+            return view('funding.create',compact('agency'));
         }catch (Exception $e){
 
             return ["message" => $e->getMessage(),
@@ -34,18 +34,15 @@ class BudgetHeadController extends Controller
      */
     public function create(Request $request)
     {
-        //        try {
-            $request->validate([
-                'budget_title'=>'required|unique:budget_heads',
-                'budget_type'=>'required',
-//            'description'=>'required'
 
-            ]);
-            $budget=new BudgetHead;
-            $budget->budget_title=$request->budget_title;
-            $budget->budget_type=$request->budget_type;
-            $budget->save();
-            return redirect(route('admin.budget.index'))->with('success','Budget Created Successfully');
+//        try {
+        $request->validate([
+            'agency_name'=>'required'
+        ]);
+        $agency=new FundingAgency;
+        $agency->agency_name=$request->agency_name;
+        $agency->save();
+        return redirect(route('admin.funding.index'))->with('success','Funding Agency Created Successfully');
 //        }catch (Exception $e)
 //        {
 //            return ["message" => $e->getMessage(),
@@ -80,15 +77,14 @@ class BudgetHeadController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function edit($id)
     {
         try {
-
-            $budget=BudgetHead::find($id);
-            return view('budget.edit',compact('budget'));
-        }catch (Exception $e){
+            $agency=FundingAgency::find($id);
+            return view('funding.edit',compact('agency'));
+        }  catch (Exception $e){
 
             return ["message" => $e->getMessage(),
                 "status" => $e->getCode()
@@ -101,16 +97,15 @@ class BudgetHeadController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function update(Request $request, $id)
     {
         try {
-            $budget=BudgetHead::find($id);
-            $budget->budget_title=$request->budget_title;
-            $budget->budget_type=$request->budget_type;
-            $budget->save();
-            return redirect(route('admin.budget.index'))->with('success','Budget Update Successfully');
+            $agency=FundingAgency::find($id);
+            $agency->agency_name=$request->agency_name;
+            $agency->save();
+            return redirect(route('admin.funding.index'))->with('success','Funding Agency Update Successfully');
 
         } catch (Exception $e)
         {
@@ -129,10 +124,11 @@ class BudgetHeadController extends Controller
     public function destroy($id)
     {
         try {
-            BudgetHead::destroy($id);
-            return redirect(route('admin.budget.index'))->with('success','Budget delete Successfully');
-        }catch (Exception $e)
-        {
+            FundingAgency::destroy($id);
+            return redirect(route('admin.funding.index'))->with('success','Funding Agency Deleted Successfully');
+
+        }catch (Exception $e){
+
             return ["message" => $e->getMessage(),
                 "status" => $e->getCode()
             ];
