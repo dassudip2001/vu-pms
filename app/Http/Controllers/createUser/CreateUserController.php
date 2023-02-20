@@ -20,10 +20,10 @@ class CreateUserController extends Controller
      */
     function __construct()
     {
-        $this->middleware('role_or_permission:Post access|Post create|Post edit|Post delete', ['only' => ['index', 'show']]);
-        $this->middleware('role_or_permission:Post create', ['only' => ['create', 'store']]);
-        $this->middleware('role_or_permission:Post edit', ['only' => ['edit', 'update']]);
-        $this->middleware('role_or_permission:Post delete', ['only' => ['destroy']]);
+        $this->middleware('role_or_permission:User access|User create|User edit|User delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:User create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:User edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:User delete', ['only' => ['destroy']]);
     }
     public function index()
     {

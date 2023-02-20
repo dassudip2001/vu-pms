@@ -12,6 +12,13 @@ class FacultiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('role_or_permission:User access|User create|User edit|User delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:User create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:User edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:User delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         //
