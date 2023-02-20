@@ -75,10 +75,10 @@
                             </tr>
                         </thead>
                         <div class="overflow-auto">
-                            @foreach ($invoice as $inv)
+                            @foreach ($invoice as $key=>$inv)
                                 <tbody>
                                     <tr>
-                                        <td>{{ $inv->id }}</td>
+                                        <td>{{ $key+1 }}</td>
                                         <td>{{ $inv->name }}</td>
                                         <td>{{ $inv->file }}</td>
                                         <td> {{ $inv->bill_no }} </td>

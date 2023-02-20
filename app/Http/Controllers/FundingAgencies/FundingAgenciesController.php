@@ -45,7 +45,7 @@ class FundingAgenciesController extends Controller
 
         //        try {
         $request->validate([
-            'agency_name' => 'required'
+            'agency_name' => 'required|unique:funding_agencies'
         ]);
         $agency = new FundingAgency;
         $agency->agency_name = $request->agency_name;

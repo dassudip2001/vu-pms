@@ -114,9 +114,9 @@
                         </thead>
                         <div class="overflow-auto">
                             <tbody>
-                                @foreach ($budget as $item)
+                                @foreach ($budget as $key=>$item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $key+1 }}</td>
                                         <td> {{ $item->budget_title }}</td>
 
                                         <td> {{ $item->budget_type }}</td>

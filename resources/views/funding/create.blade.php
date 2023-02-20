@@ -13,7 +13,7 @@
                 <div class="col">
                     @role('admin')
                         <div class="card">
-                            @if (session('success'))
+                            {{-- @if (session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
                                 </div>
@@ -26,7 +26,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                            @endif
+                            @endif --}}
                             <form action=" " method="POST">
                                 @csrf
                                 <div class="card-title mx-2 mt-2">
@@ -89,9 +89,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($agency as $item)
+                                @foreach ($agency as $key=>$item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $key+1 }}</td>
                                         <td> {{ $item->agency_name }}</td>
                                         @role('admin')
                                             <td>

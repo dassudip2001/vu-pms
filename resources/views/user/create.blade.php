@@ -298,11 +298,11 @@
                         </div>
                         <div class="card-title  mx-3">
                             <!-- success massage -->
-                            @if (session('success'))
+                            {{-- @if (session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
                                 </div>
-                            @endif
+                            @endif --}}
                             <hr>
                             <br>
                             {{-- <form action="{{ route('usercreate.search') }}" method="GET" class="d-flex">
@@ -319,7 +319,7 @@
                                 <table class="table table-striped table-hover ">
                                     <thead class="table-dark">
                                         <tr>
-
+                                            <th>#</th>
                                             <th> Fac Code</th>
                                             <th> Fac Title</th>
                                             <th> Name</th>
@@ -336,9 +336,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($createUser as $item)
+                                        @foreach ($createUser as $key=>$item)
                                             @if (Auth::user()->id == '1' || Auth::id() == $item->user->id)
                                                 <tr>
+                                                    <td> {{$key+1}} </td>
                                                     <td>{{ $item->faculty->fac_code }}</td>
                                                     <td>{{ $item->faculty->fac_title }}</td>
                                                     <td>{{ $item->user->name }}</td>

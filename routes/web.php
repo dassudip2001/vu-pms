@@ -65,7 +65,7 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('permissions', 'PermissionController');
         Route::resource('users', 'UserController');
         Route::resource('posts', 'PostController');
-        Route::get('/department', [DepartmentController::class, 'index'])->name('index');
+        Route::get('/department', [DepartmentController::class, 'index'])->name('department.index');
         Route::post('/department', [DepartmentController::class, 'create'])->name('create');
         Route::get('/department/edit/{id}', [DepartmentController::class, 'edit'])->name('edit');
         Route::put('/department/edit/{id}', [DepartmentController::class, 'update'])->name('update');

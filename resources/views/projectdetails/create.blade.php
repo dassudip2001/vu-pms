@@ -1,4 +1,5 @@
 <x-app-layout>
+    
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
         <div class="container mx-auto px-6 py-2">
             <div class="text-right">
@@ -31,7 +32,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        @if ($errors->any())
+                                        {{-- @if ($errors->any())
                                             <div class="alert alert-danger">
                                                 <ul>
                                                     @foreach ($errors->all() as $error)
@@ -39,7 +40,7 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                        @endif
+                                        @endif --}}
                                         <div class="modal-body">
                                             <!-- form Start -->
                                             <form action="" method="POST" name="budgetForm">
@@ -270,6 +271,7 @@
                                 <table class="table table-striped table-hover">
                                     <thead class="table-dark">
                                         <tr>
+                                            <td>#</td>
                                             <td>Project No</td>
                                             {{-- <td> Name</td> --}}
                                             <td>Project Title</td>
@@ -288,6 +290,7 @@
                                     <tbody>
                                         @foreach ($project_details as $key => $pro)
                                             <tr>
+                                                <td> {{ $key + 1 }} </td>
                                                 <td>{{ $pro->project_no }}</td>
                                                 {{-- <td>{{$pro->name}}</td> --}}
                                                 <td>{{ $pro->project_title }}</td>

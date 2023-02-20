@@ -32,7 +32,7 @@
             <span class="mx-3">Dashboard</span>
         </a>
 
-        @canany('Role access', 'Role add', 'Role edit', 'Role delete')
+        @canany('Role access', 'Role create', 'Role edit', 'Role delete')
             <a style="text-decoration: none" class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 {{ Route::currentRouteNamed('admin.roles.index') ? 'active' : '' }}"
                 href="{{ route('admin.roles.index') }}">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -45,7 +45,7 @@
                 <span class="mx-3">Role</span>
             </a>
         @endcanany
-        @canany('Permission access', 'Permission add', 'Permission edit', 'Permission delete')
+        @canany('Permission access', 'Permission create', 'Permission edit', 'Permission delete')
             <a style="text-decoration: none" class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 {{ Route::currentRouteNamed('admin.permissions.index') ? 'active' : '' }}"
                 href="{{ route('admin.permissions.index') }}">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -59,7 +59,7 @@
             </a>
         @endcanany
 
-        @canany('User access', 'User add', 'User edit', 'User delete')
+        @canany('User access', 'User create', 'User edit', 'User delete')
             <a style="text-decoration: none" class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 {{ Route::currentRouteNamed('admin.users.index') ? 'active' : '' }}"
                 href="{{ route('admin.users.index') }}">
                 <span class="inline-flex justify-center items-center">
@@ -86,7 +86,7 @@
                     <span class="mx-3">Post</span>
                 </a>
                 @endcanany --}}
-        {{-- @canany('Post access', 'Post add', 'Post edit', 'Post delete') --}}
+        @canany('Department access', 'Department create', 'Department edit', 'Department delete')
         <a style="text-decoration: none" class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 "
             href="/admin/department">
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -97,9 +97,9 @@
             </svg>
             <span class="mx-3">Departments</span>
         </a>
-        {{-- @endcanany --}}
+        @endcanany
 
-        {{-- @canany('Post access', 'Post add', 'Post edit', 'Post delete') --}}
+        @canany('Faculty access', 'Faculty create', 'Faculty edit', 'Faculty delete')
         <a style="text-decoration: none" class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 "
             href="/admin/createuser">
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -110,8 +110,8 @@
             </svg>
             <span class="mx-3">Faculty</span>
         </a>
-        {{-- @endcanany --}}
-        {{-- @canany('Post access', 'Post add', 'Post edit', 'Post delete') --}}
+        @endcanany
+        @canany('Budget access', 'Budget create', 'Budget edit', 'Budget delete')
         <a style="text-decoration: none" class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 "
             href="/admin/budget">
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -122,8 +122,8 @@
             </svg>
             <span class="mx-3">Budget Head</span>
         </a>
-        {{-- @endcanany --}}
-        {{-- @canany('Post access', 'Post add', 'Post edit', 'Post delete') --}}
+        @endcanany
+        @canany('FundingAgency access', 'FundingAgency create', 'FundingAgency edit', 'FundingAgency delete')
         <a style="text-decoration: none" class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 "
             href="/admin/funding">
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -134,8 +134,8 @@
             </svg>
             <span class="mx-3">Funding Agency</span>
         </a>
-        {{-- @endcanany --}}
-        {{-- @canany('Post access', 'Post add', 'Post edit', 'Post delete') --}}
+        @endcanany
+        @canany('Project access', 'Project create', 'Project edit', 'Project delete')
         <a style="text-decoration: none" class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 "
             href="/admin/projectdetail">
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -146,7 +146,7 @@
             </svg>
             <span class="mx-3">Project</span>
         </a>
-        {{-- @endcanany --}}
+        @endcanany
         @canany('Invoice access', 'Invoice create', 'Invoice edit', 'Invoice delete')
         <a style="text-decoration: none" class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 "
             href="/admin/invoiceuoload">
@@ -161,7 +161,7 @@
         @endcanany
 
 
-        {{-- @canany('Post access', 'Post add', 'Post edit', 'Post delete') --}}
+        @canany('Fund access', 'Fund create', 'Fund edit', 'Fund delete')
         <a style="text-decoration: none" class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 "
             href="/admin/relesefund">
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -172,7 +172,7 @@
             </svg>
             <span class="mx-3">Relese Fund </span>
         </a>
-        {{-- @endcanany --}}
+        @endcanany
 
 
         @canany('Mail access', 'Mail edit')

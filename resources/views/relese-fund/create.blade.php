@@ -307,6 +307,8 @@
                             <tr>
 
                                 {{-- <th>Project Name</th> --}}
+                                <th>#</th>
+
                                 <th>Date</th>
                                 <th>Transtation No</th>
                                 <th>Type</th>
@@ -320,8 +322,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($funRelese as $trans)
+                            @foreach ($funRelese as $key => $trans)
                                 <tr>
+                                    <td> {{ $key + 1 }} </td>
                                     {{-- <td>{{$trans->project_no}} ||  {{$trans->project_title}} </td> --}}
                                     <td> {{ $trans->date }} </td>
                                     <td>{{ $trans->transaction_no }}</td>
