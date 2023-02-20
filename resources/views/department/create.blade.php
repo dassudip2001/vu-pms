@@ -16,7 +16,7 @@
                     @role('admin')
                         <div class="card max-h-96">
 
-                            @if (session('success'))
+                            {{-- @if (session('success'))
                                 <div class="alert alert-primary" role="alert">
                                     {{ session('success') }}
                                 </div>
@@ -29,7 +29,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                            @endif
+                            @endif --}}
                             <form action="/admin/department" method="POST">
                                 @csrf
                                 <div class="card-title mx-2 mt-2">

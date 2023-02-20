@@ -14,7 +14,7 @@
                     <h6>Edit Budget Details</h6>
                     <hr>
                 </div>
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -22,7 +22,7 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif --}}
                 <div class="card-body">
                     <form action=" " method="POST">
                         @csrf

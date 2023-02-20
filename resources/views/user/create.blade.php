@@ -20,13 +20,13 @@
                                     <div class="modal-content">
                                         @role('admin')
                                             <div class="modal-header">
-    
+
                                                 <h5 class="modal-title" id="exampleModalToggleLabel">Create User</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                         @endrole
-                                        @if ($errors->any())
+                                        {{-- @if ($errors->any())
                                             <div class="alert alert-danger">
                                                 <ul>
                                                     @foreach ($errors->all() as $error)
@@ -34,7 +34,7 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                        @endif
+                                        @endif --}}
                                         <div class="modal-body">
                                             <form action=" " method="POST">
                                                 @csrf
@@ -42,7 +42,8 @@
                                                     <div class="col">
                                                         <!-- Faculty Title  -->
                                                         <div class="mb-6 ">
-                                                            <label for="faculty_title">Faculty Title<span class="required"
+                                                            <label for="faculty_title">Faculty Title<span
+                                                                    class="required"
                                                                     style="color: red;">*</span></label>
                                                             <!-- <input type="text" class="form-control form-control-sm" name="fac_title"  id="faculty_title" aria-describedby="faculty_title" placeholder="Enter  Faculty Title"> -->
                                                             <select name="fac_title"
@@ -89,13 +90,14 @@
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                         @enderror
                                                     </div>
-    
+
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <!-- Faculty Email -->
                                                         <div class="mb-6">
-                                                            <label for="faculty_email">Faculty Email<span class="required"
+                                                            <label for="faculty_email">Faculty Email<span
+                                                                    class="required"
                                                                     style="color: red;">*</span></label>
                                                             <input type="email"
                                                                 class="form-control form-control-sm @error('email') is-invalid @enderror"
@@ -111,12 +113,14 @@
                                                         <!-- Faculty Department -->
                                                         <div class="mb-6">
                                                             <label for="funding_agency">Faculty Department <span
-                                                                    class="required" style="color: red;">*</span></label>
+                                                                    class="required"
+                                                                    style="color: red;">*</span></label>
                                                             <br>
                                                             <select name="department_id"
                                                                 class="form-select form-select-sm @error('department_name') is-invalid @enderror"
                                                                 aria-label=".form-select-sm example">
-                                                                <option selected hidden>Select Faculty Department </option>
+                                                                <option selected hidden>Select Faculty Department
+                                                                </option>
                                                                 @foreach ($data as $department)
                                                                     <option value="{{ $department->id }}">
                                                                         {{ $department->dept_name }}
@@ -134,7 +138,8 @@
                                                         <!--Faculty Designation  -->
                                                         <div class="mb-6 ">
                                                             <label for="faculty_designation">Faculty Designation<span
-                                                                    class="required" style="color: red;">*</span></label>
+                                                                    class="required"
+                                                                    style="color: red;">*</span></label>
                                                             <!-- <input type="text" class="form-control form-control-sm" name="fac_designtion"  id="faculty_designation" aria-describedby="faculty_designation" placeholder="Enter  Faculty Designation"> -->
                                                             <select name="fac_designtion"
                                                                 class="form-select form-select-sm @error('fac_designtion') is-invalid @enderror"
@@ -152,7 +157,8 @@
                                                     <div class="col">
                                                         <!-- Faculty Join Date -->
                                                         <div class="mb-6">
-                                                            <label for="faculty_join">Faculty Join<span class="required"
+                                                            <label for="faculty_join">Faculty Join<span
+                                                                    class="required"
                                                                     style="color: red;">*</span></label>
                                                             <input type="date"
                                                                 class="form-control form-control-sm @error('fac_join') is-invalid @enderror"
@@ -170,7 +176,8 @@
                                                         <!-- Faculty Retirement Date -->
                                                         <div class="mb-6">
                                                             <label for="faculty_retirement">Faculty Retirement<span
-                                                                    class="required" style="color: red;">*</span></label>
+                                                                    class="required"
+                                                                    style="color: red;">*</span></label>
                                                             <input type="date"
                                                                 class="form-control form-control-sm @error('fac_retirement') is-invalid @enderror"
                                                                 name="fac_retirement" id="from-datepicker"
@@ -184,7 +191,8 @@
                                                     <div class="col">
                                                         <!-- Faculty Phone -->
                                                         <div class="mb-6">
-                                                            <label for="faculty_phone">Faculty Phone<span class="required"
+                                                            <label for="faculty_phone">Faculty Phone<span
+                                                                    class="required"
                                                                     style="color: red;">*</span></label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm @error('fac_phone') is-invalid @enderror"
@@ -202,7 +210,8 @@
                                                         <!-- Faculty Status -->
                                                         <div class="mb-6">
                                                             <label for="faculty_status">Faculty Status<span
-                                                                    class="required" style="color: red;">*</span></label>
+                                                                    class="required"
+                                                                    style="color: red;">*</span></label>
                                                             <!-- <input type="text" class="form-control form-control-sm" name="fac_status"  id="faculty_status" aria-describedby="faculty_status" placeholder="Enter  Faculty Status"> -->
                                                             <select name="fac_status"
                                                                 class="form-select form-select-sm @error('fac_status') is-invalid @enderror"
@@ -220,7 +229,8 @@
                                                         <!-- Faculty Description -->
                                                         <div class="mb-6">
                                                             <label for="faculty_description">Faculty Description<span
-                                                                    class="required" style="color: red;">*</span></label>
+                                                                    class="required"
+                                                                    style="color: red;">*</span></label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm @error('fac_description') is-invalid @enderror"
                                                                 name="fac_description" id="faculty_description"
@@ -236,7 +246,8 @@
                                                     <div class="col">
                                                         <!-- password -->
                                                         <div class="mb-6">
-                                                            <label for="password">Faculty Password<span class="required"
+                                                            <label for="password">Faculty Password<span
+                                                                    class="required"
                                                                     style="color: red;">*</span></label>
                                                             <input type="password"
                                                                 class="form-control form-control-sm @error('password') is-invalid @enderror"
@@ -252,7 +263,8 @@
                                                         <!-- confirm password -->
                                                         <div class="mb-6">
                                                             <label for="confirm_password">Confirm Password<span
-                                                                    class="required" style="color: red;">*</span></label>
+                                                                    class="required"
+                                                                    style="color: red;">*</span></label>
                                                             <input type="password"
                                                                 class="form-control form-control-sm @error('password_confirmation') is-invalid @enderror"
                                                                 name="password_confirmation" id="confirm_password"
@@ -265,7 +277,7 @@
                                                     </div>
                                                 </div>
                                                 <hr>
-                                                
+
                                                 <!-- Button -->
                                                 <button
                                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-end">Create
@@ -277,8 +289,9 @@
                             </div>
                             @role('admin')
                                 <a class=" "style="border: none;text-decoration: none;"
-                                    href="{{ url('/createuser/download') }}"><i class="fa-solid fa-print"></i>Print All</a>
-    
+                                    href="{{ url('/createuser/download') }}"><i class="fa-solid fa-print"></i>Print
+                                    All</a>
+
                                 <a class="btn btn-primary float-end" data-bs-toggle="modal" href="#exampleModalToggle"
                                     role="button"><i class="fa-solid fa-user-plus"></i> Add New User</a>
                             @endrole
@@ -298,7 +311,7 @@
                                 <button class="btn btn-outline-success" type="submit">Search</button>
                             </form> --}}
                             <br>
-    
+
                             <h6> User Details</h6>
                         </div>
                         <div class="card-body p-0">
@@ -306,7 +319,7 @@
                                 <table class="table table-striped table-hover ">
                                     <thead class="table-dark">
                                         <tr>
-    
+
                                             <th> Fac Code</th>
                                             <th> Fac Title</th>
                                             <th> Name</th>
@@ -319,7 +332,7 @@
                                             <th> Status</th>
                                             <th>Action </th>
                                             <th>Print </th>
-    
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -366,14 +379,12 @@
                     </div>
                 </div>
             </div>
-    
+
         </div>
-    
-    
+
+
         </div>
         </div>
     </main>
     </div>
 </x-app-layout>
-
-    

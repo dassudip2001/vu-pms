@@ -81,6 +81,10 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/budget/edit/{id}', [BudgetHeadController::class, 'edit'])->name('budget.edit');
         Route::put('/budget/edit/{id}', [BudgetHeadController::class, 'update'])->name('budget.update');
         Route::get('/budget/delete/{id}', [BudgetHeadController::class, 'destroy'])->name('budget.destroy');
+        // download pdf
+        Route::get('/budget/download', [BudgetHeadController::class, 'pdf']);
+        // at a time one pdf
+        Route::get('/budget/pdfForm/{id}', [BudgetHeadController::class, 'pdfForm']);
         //   funding agency
         Route::get('/funding', [FundingAgenciesController::class, 'index'])->name('funding.index');
         Route::post('/funding', [FundingAgenciesController::class, 'create'])->name('funding.create');

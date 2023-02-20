@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BudgetHead;
 use Exception;
 use Illuminate\Http\Request;
-
+use PDF;
 class BudgetHeadController extends Controller
 {
     /**
@@ -145,4 +145,36 @@ class BudgetHeadController extends Controller
             ];
         }
     }
+
+    // pdf generate all pdf
+    public function pdf(){
+        $budgetHead=BudgetHead::all();
+        $pdf=PDF::loadView('budget.print',compact('budgetHead'));
+        return $pdf->download('funding.pdf');
+   }
+      // generate pdf one row
+      public function pdfForm(Request $request,$id){
+        $budgetHead1 = BudgetHead::all()->where('id', $id);  
+    $pdf=PDF::loadView('budget.pdf_download',compact('budgetHead1'));
+    return $pdf->download('funding.pdf');
+    }
+
+ 
+    // search
+
+    public function search(Request $request){
+        // Get the search value from the request
+       $search = $request->input('search');
+
+       // Search in the title and body columns from the posts table
+       $budgetSearch = BudgetHead::query()
+           ->where('budget_title', 'LIKE', "%{$search}%")
+           ->orWhere('budget_type', 'LIKE', "%{$search}%")
+           ->get();
+        
+
+        // Return the search view with the resluts compacted
+        return view('budget.search', compact('budgetSearch'));
+    }
+
 }

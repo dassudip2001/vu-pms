@@ -14,7 +14,7 @@
                 <div class="col">
                     @role('admin')
                         <div class="card">
-                            @if (session('success'))
+                            {{-- @if (session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
                                 </div>
@@ -27,7 +27,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                            @endif
+                            @endif --}}
                             <form action=" " method="POST">
                                 @csrf
                                 <div class="card-title mx-2 mt-2">
@@ -80,7 +80,7 @@
             <div class="col">
                 <div class="card max-h-96">
                     <div class="card-title mx-2 mt-2">
-                        <a class="float-end" href=" {{ url('/budget/download') }} ">
+                        <a style="text-decoration: none" class="float-end" href=" {{ url('/admin/budget/download') }} ">
                             <i
                                 class="fa-regular fa-solid fa-print"style="border: none;
                   text-decoration: none;"></i>Print
@@ -132,7 +132,7 @@
                                             </td>
                                             </a>
                                             <th>
-                                                <a href=" {{ url('/budget/pdfForm', $item->id) }} ">
+                                                <a href=" {{ url('/admin/budget/pdfForm', $item->id) }} ">
                                                     <i class="fa-regular fa-solid fa-print"></i>
                                                 </a>
 
