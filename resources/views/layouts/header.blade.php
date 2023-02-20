@@ -39,7 +39,8 @@
                 style="display: none;">
                 <a href="{{ route('admin.profile') }}"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
-
+                    <a href="{{ route('chatify') }}"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Massenger</a>
                 <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
                     <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();
