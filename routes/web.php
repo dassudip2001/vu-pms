@@ -3,6 +3,7 @@
 use App\Http\Controllers\BudgetHead\BudgetHeadController;
 use App\Http\Controllers\FundingAgencies\FundingAgenciesController;
 use App\Http\Controllers\ProjectDetail\ProjectDetailController;
+use App\Http\Controllers\InvoiceUpload\InvoiceUploadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
     ProfileController,
@@ -101,6 +102,18 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/projectdetail/pdfForm/{id}', [ProjectDetailController::class, 'pdfForm']);
         //  show all details for projects details page
         Route::get('/projectdetails/showall/{id}', [ProjectDetailController::class, 'showall'])->name('projectdetails.showall');
+
+
+        // invoice upload
+
+        Route::get('/invoiceuoload', [InvoiceUploadController::class, 'index'])->name('invoiceuoload.index');
+        Route::post('/invoiceuoload', [InvoiceUploadController::class, 'create'])->name('invoiceuoload.create');
+        Route::get('/download/{file}', [InvoiceUploadController::class, 'download']);
+        Route::get('/view/{id}', [InvoiceUploadController::class, 'view']);
+        Route::get('invoiceuoload/delete/{id}', [InvoiceUploadController::class, 'destroy']);
+
+        Route::get('/invoiceuoload/edit/{id}', [InvoiceUploadController::class, 'edit'])->name('invoiceuoload.edit');
+        Route::put('/invoiceuoload/edit/{id}', [InvoiceUploadController::class, 'update'])->name('invoiceuoload.update');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/mail', [MailSettingController::class, 'index'])->name('mail.index');
