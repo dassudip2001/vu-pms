@@ -50,7 +50,7 @@ class InvoiceUploadController extends Controller
 
         $data->save();
         // return redirect()->back();
-        return redirect(route('admin.invoiceuoload.index'))->with('success', 'Upload Successfully');
+        return redirect(route('admin.invoiceuoload.index'))->with('success', 'Create Successfully');
         // $image = $request->file('file');
 
         // $imageName = time(). ".". $image->extension();

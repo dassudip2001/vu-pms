@@ -36,7 +36,7 @@
             <div class="card-body">
                 {{-- success massage --}}
 
-                @if (session('success'))
+                {{-- @if (session('success'))
                     <div class="alert alert-primary" role="alert">
                         {{ session('success') }}
                     </div>
@@ -49,7 +49,7 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif --}}
                 {{--  show table --}}
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">

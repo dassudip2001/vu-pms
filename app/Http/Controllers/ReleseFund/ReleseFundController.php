@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\FundReleseBudgetModule;
 use App\Models\ReleseFund;
 use Exception;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -287,28 +288,28 @@ class ReleseFundController extends Controller
         }
     }
 
-    // // pdf generate all pdf
-    // public function pdf(){
-    //     $releseFund2=DB::table('fund_relese_budget_modules')
-    //     ->join('budget_heads','budget_heads.id','=','fund_relese_budget_modules.relese_fund_budget_id')
-    //     ->join('relese_funds','relese_funds.id','=','fund_relese_budget_modules.relese_fund_id')
-    //     ->join('projects','projects.id','=','relese_funds.projec_fund_relese_id')
-    //     ->get();
+    // pdf generate all pdf
+    public function pdf(){
+        $releseFund2=DB::table('fund_relese_budget_modules')
+        ->join('budget_heads','budget_heads.id','=','fund_relese_budget_modules.relese_fund_budget_id')
+        ->join('relese_funds','relese_funds.id','=','fund_relese_budget_modules.relese_fund_id')
+        ->join('projects','projects.id','=','relese_funds.projec_fund_relese_id')
+        ->get();
 
-    //     $pdf=PDF::loadView('relese-fund.print',compact('releseFund2'));
-    //     return $pdf->download('fund.pdf');
-    // }
-    // // generate pdf one row
-    // public function pdfForm(Request $request,$id){
-    //     $releseFund1= DB::table('fund_relese_budget_modules')
-    //     ->join('budget_heads','budget_heads.id','=','fund_relese_budget_modules.relese_fund_budget_id')
-    //     ->join('relese_funds','relese_funds.id','=','fund_relese_budget_modules.relese_fund_id')
-    //     ->join('projects','projects.id','=','relese_funds.projec_fund_relese_id')
-    //     ->get()
-    //    ->where('relese_fund_id', $id);
-    //     $pdf=PDF::loadView('relese-fund.pdf_download',compact('releseFund1'));
-    //     return $pdf->download('funding.pdf');
-    // }
+        $pdf=PDF::loadView('relese-fund.print',compact('releseFund2'));
+        return $pdf->download('fund.pdf');
+    }
+    // generate pdf one row
+    public function pdfForm(Request $request,$id){
+        $releseFund1= DB::table('fund_relese_budget_modules')
+        ->join('budget_heads','budget_heads.id','=','fund_relese_budget_modules.relese_fund_budget_id')
+        ->join('relese_funds','relese_funds.id','=','fund_relese_budget_modules.relese_fund_id')
+        ->join('projects','projects.id','=','relese_funds.projec_fund_relese_id')
+        ->get()
+       ->where('relese_fund_id', $id);
+        $pdf=PDF::loadView('relese-fund.pdf_download',compact('releseFund1'));
+        return $pdf->download('funding.pdf');
+    }
 
     // search
 
