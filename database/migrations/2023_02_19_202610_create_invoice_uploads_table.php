@@ -20,7 +20,7 @@ class CreateInvoiceUploadsTable extends Migration
             $table->string('bill_no');
             $table->bigInteger('amount');
             $table->string('name');
-            $table->string('status')->default('panding');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }
