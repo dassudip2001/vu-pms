@@ -15,7 +15,18 @@ class CreateReleseFundsTable extends Migration
     {
         Schema::create('relese_funds', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->string('transaction_no');
+            $table->string('payment_method');
+            $table->date('transtation_date');
+            $table->string('payment_method_no');
+            $table->bigInteger('relese_funds_amount');
+            $table->unsignedBigInteger('projec_fund_relese_id');
+
+            // $table->string('trans_no');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -15,6 +15,7 @@ class CreateFundingAgenciesTable extends Migration
     {
         Schema::create('funding_agencies', function (Blueprint $table) {
             $table->id();
+            $table->string('agency_name');
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateBudgetHeadsTable extends Migration
     {
         Schema::create('budget_heads', function (Blueprint $table) {
             $table->id();
+            $table->string('budget_title');
+            $table->string('budget_type');
             $table->timestamps();
         });
     }

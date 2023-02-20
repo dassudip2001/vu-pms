@@ -15,6 +15,11 @@ class CreateInvoiceUploadsTable extends Migration
     {
         Schema::create('invoice_uploads', function (Blueprint $table) {
             $table->id();
+            $table->string('file');
+            $table->string('description');
+            $table->string('bill_no');
+            $table->bigInteger('amount');
+            $table->string('name');
             $table->timestamps();
         });
     }
