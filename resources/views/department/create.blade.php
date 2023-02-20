@@ -90,7 +90,7 @@
             <div class="col">
                 <div class="card max-h-96">
                     <div class="card-title mx-2 mt-2">
-                        <a class="  float-end" href="{{ url('/department/download') }} "
+                        <a class="  float-end" href="{{ url('/admin/department/download') }} "
                             style="border: none;
               text-decoration: none;"><i
                                 class="fa-solid fa-print"></i>Print All</a>
@@ -128,9 +128,10 @@
                             </thead>
                             <div class="overflow-auto">
                                 <tbody>
-                                    @foreach ($department as $item)
+                                    @foreach ($department as $key =>$item)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
+                                            <td>{{$key+1}}</td>
+                                            {{-- <td>{{ $item->id }}</td> --}}
                                             <td> {{ $item->dept_name }}</td>
                                             <td> {{ $item->dept_code }}</td>
                                             <td> {{ $item->description }}</td>
@@ -148,7 +149,7 @@
                                                 </td>
                                                 </a>
                                                 <td>
-                                                    <a href=" {{ url('/department/pdfForm', $item->id) }} ">
+                                                    <a href=" {{ url('/admin/department/pdfForm', $item->id) }} ">
                                                         <i class="fa-regular fa-solid fa-print"></i>
                                                     </a>
 

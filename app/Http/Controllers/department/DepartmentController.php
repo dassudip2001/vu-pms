@@ -5,6 +5,7 @@ namespace App\Http\Controllers\department;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use Exception;
+use PDF;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -149,4 +150,52 @@ class DepartmentController extends Controller
             ];
         }
     }
+    // pdf generate all pdf
+    public function pdf(){
+        $department=Department::all();
+        $pdf=PDF::loadView('department.pdf',compact('department'));
+        return $pdf->download('department.pdf');
+   }
+   // generate pdf one row
+   public function pdfForm(Request $request,$id){
+       // $department = Department::find($id);
+       // $pdf=PDF::loadView('department.pdf_download',compact('department'));
+       //  return $pdf->download('department.pdf');
+       // view()->share('department',$department);
+       //     //   if($request->has('download')){
+       //         $pdf = PDF::loadView('department.pdf_download');
+       //         return $pdf->download('pdf_download.pdf');
+       // //   }
+//         $url = explode('/', url()->current()); // something like [..., '127.0.0.1:8000', 'pengajuan', '3']
+// $id = end($url); // result is 3
+//         $department = Department::find( $id)->first();
+
+// // Rest is just same
+//       $pdf = PDF::loadview('department.pdf_download', ['department' => $department]);
+// return $pdf->stream();
+
+
+//         // return view('department.create')->with('listing', $listing);
+//     }
+   $department1 = Department::all()->where('id', $id);
+   $pdf=PDF::loadView('department.pdf_download',compact('department1'));
+   return $pdf->download('department.pdf');
+   }
+
+   // search
+
+   public function search(Request $request){
+       // Get the search value from the request
+      $search = $request->input('search');
+
+      // Search in the title and body columns from the posts table
+      $posts = Department::query()
+          ->where('dept_name', 'LIKE', "%{$search}%")
+          ->orWhere('description', 'LIKE', "%{$search}%")
+          ->get();
+       
+
+       // Return the search view with the resluts compacted
+       return view('department.search', compact('posts'));
+   }
 }
