@@ -24,18 +24,17 @@ Route::get('/', function () {
 });
 
 
-Route::get('/test-mail',function(){
+// Route::get('/test-mail', function () {
 
-    $message = "Testing mail";
+//     $message = "Testing mail";
 
-    \Mail::raw('Hi, welcome!', function ($message) {
-      $message->to('sudip5428@gmail.com')
-        ->subject('Testing mail');
-    });
+//     \Mail::raw('Hi, welcome!', function ($message) {
+//         $message->to('sudip5428@gmail.com')
+//             ->subject('Testing mail');
+//     });
 
-    dd('sent');
-
-});
+//     dd('sent');
+// });
 
 
 Route::get('/dashboard', function () {
@@ -43,36 +42,42 @@ Route::get('/dashboard', function () {
 })->middleware(['front'])->name('dashboard');
 
 
-require __DIR__.'/front_auth.php';
+require __DIR__ . '/front_auth.php';
 
 // Admin routes
 Route::get('/admin/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('admin.dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 
 
 Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
-    ->group(function(){
-        Route::resource('roles','RoleController');
-        Route::resource('permissions','PermissionController');
-        Route::resource('users','UserController');
-        Route::resource('posts','PostController');
-        Route::get('/department',[DepartmentController::class,'index'])->name('index');
-        Route::post('/department',[DepartmentController::class,'create'])->name('create');
-        Route::get('/department/edit/{id}',[DepartmentController::class,'edit'])->name('edit');
-        Route::put('/department/edit/{id}',[DepartmentController::class,'update'])->name('update');
-        Route::get('/department/delete/{id}',[DepartmentController::class,'destroy'])->name('destroy');
-        Route::get('/createuser',[CreateUserController::class,'index'])->name('usercreate.index');
-        Route::post('/createuser',[CreateUserController::class,'create'])->name('usercreate.create');
-        Route::get('/createuser/edit/{id}',[CreateUserController::class,'edit'])->name('usercreate.edit');
-        Route::put('/createuser/edit/{id}',[CreateUserController::class,'update'])->name('usercreate.update');
-        Route::get('/createuser/delete/{id}',[CreateUserController::class,'destroy'])->name('usercreate.destroy');
-        Route::get('/profile',[ProfileController::class,'index'])->name('profile');
-        Route::put('/profile-update',[ProfileController::class,'update'])->name('profile.update');
-        Route::get('/mail',[MailSettingController::class,'index'])->name('mail.index');
-        Route::put('/mail-update/{mailsetting}',[MailSettingController::class,'update'])->name('mail.update');
-});
+    ->group(function () {
+        Route::resource('roles', 'RoleController');
+        Route::resource('permissions', 'PermissionController');
+        Route::resource('users', 'UserController');
+        Route::resource('posts', 'PostController');
+        Route::get('/department', [DepartmentController::class, 'index'])->name('index');
+        Route::post('/department', [DepartmentController::class, 'create'])->name('create');
+        Route::get('/department/edit/{id}', [DepartmentController::class, 'edit'])->name('edit');
+        Route::put('/department/edit/{id}', [DepartmentController::class, 'update'])->name('update');
+        Route::get('/department/delete/{id}', [DepartmentController::class, 'destroy'])->name('destroy');
+        Route::get('/createuser', [CreateUserController::class, 'index'])->name('usercreate.index');
+        Route::post('/createuser', [CreateUserController::class, 'create'])->name('usercreate.create');
+        Route::get('/createuser/edit/{id}', [CreateUserController::class, 'edit'])->name('usercreate.edit');
+        Route::put('/createuser/edit/{id}', [CreateUserController::class, 'update'])->name('usercreate.update');
+        Route::get('/createuser/delete/{id}', [CreateUserController::class, 'destroy'])->name('usercreate.destroy');
+        //    Budget Head
+        Route::get('/budget', [BudgetHeadController::class, 'index'])->name('budget.index');
+        Route::post('/budget', [BudgetHeadController::class, 'create'])->name('budget.create');
+        Route::get('/budget/edit/{id}', [BudgetHeadController::class, 'edit'])->name('budget.edit');
+        Route::put('/budget/edit/{id}', [BudgetHeadController::class, 'update'])->name('budget.update');
+        Route::get('/budget/delete/{id}', [BudgetHeadController::class, 'destroy'])->name('budget.destroy');
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+        Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/mail', [MailSettingController::class, 'index'])->name('mail.index');
+        Route::put('/mail-update/{mailsetting}', [MailSettingController::class, 'update'])->name('mail.update');
+    });
