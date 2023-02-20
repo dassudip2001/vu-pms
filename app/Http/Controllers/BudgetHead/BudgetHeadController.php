@@ -14,6 +14,13 @@ class BudgetHeadController extends Controller
      *
      * @return array
      */
+    function __construct()
+    {
+        $this->middleware('role_or_permission:Budget access|Budget create|Budget edit|Budget delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Budget create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Budget edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Budget delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         try {
