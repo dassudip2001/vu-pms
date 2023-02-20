@@ -16,10 +16,10 @@ class DepartmentController extends Controller
      */
     function __construct()
     {
-        $this->middleware('role_or_permission:Post access|Post create|Post edit|Post delete', ['only' => ['index','show']]);
-        $this->middleware('role_or_permission:Post create', ['only' => ['create','store']]);
-        $this->middleware('role_or_permission:Post edit', ['only' => ['edit','update']]);
-        $this->middleware('role_or_permission:Post delete', ['only' => ['destroy']]);
+        $this->middleware('role_or_permission:Department access|Department create|Department edit|Department delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Department create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Department edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Department delete', ['only' => ['destroy']]);
     }
     public function index()
     {

@@ -17,6 +17,13 @@ class ReleseFundController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('role_or_permission:Fund access|Fund create|Fund edit|Fund delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Fund create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Fund edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Fund delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $funRelese = DB::table('relese_funds')
