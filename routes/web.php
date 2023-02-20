@@ -4,6 +4,7 @@ use App\Http\Controllers\BudgetHead\BudgetHeadController;
 use App\Http\Controllers\FundingAgencies\FundingAgenciesController;
 use App\Http\Controllers\ProjectDetail\ProjectDetailController;
 use App\Http\Controllers\InvoiceUpload\InvoiceUploadController;
+use App\Http\Controllers\ReleseFund\ReleseFundController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
     ProfileController,
@@ -114,6 +115,20 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
 
         Route::get('/invoiceuoload/edit/{id}', [InvoiceUploadController::class, 'edit'])->name('invoiceuoload.edit');
         Route::put('/invoiceuoload/edit/{id}', [InvoiceUploadController::class, 'update'])->name('invoiceuoload.update');
+
+        //fund relies
+        Route::get('/relesefund', [ReleseFundController::class, 'index'])->name('relesefund.index');
+        Route::post('/relesefund', [ReleseFundController::class, 'create'])->name('relesefund.create');
+        Route::get('/relesefund/edit/{id}', [ReleseFundController::class, 'edit'])->name('relesefund.edit');
+        Route::put('/relesefund/edit/{id}', [ReleseFundController::class, 'update'])->name('relesefund.update');
+        Route::get('/relesefund/delete/{id}', [ReleseFundController::class, 'destroy'])->name('relesefund.destroy');
+        // all pdf
+        Route::get('/relesefund/download', [ReleseFundController::class, 'pdf']);
+        // at a time one pdf
+        Route::get('/relesefund/pdfForm/{id}', [ReleseFundController::class, 'pdfForm']);
+        //   search Relese fund 
+        //  search
+        Route::get('/relesefund/showall/{id}', [ReleseFundController::class, 'showall'])->name('relesefund.showall');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/mail', [MailSettingController::class, 'index'])->name('mail.index');
