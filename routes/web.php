@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BudgetHead\BudgetHeadController;
 use App\Http\Controllers\FundingAgencies\FundingAgenciesController;
+use App\Http\Controllers\ProjectDetail\ProjectDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
     ProfileController,
@@ -79,15 +80,27 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::put('/budget/edit/{id}', [BudgetHeadController::class, 'update'])->name('budget.update');
         Route::get('/budget/delete/{id}', [BudgetHeadController::class, 'destroy'])->name('budget.destroy');
         //   funding agency
-        Route::get('/funding',[FundingAgenciesController::class,'index'])->name('funding.index');
-        Route::post('/funding',[FundingAgenciesController::class,'create'])->name('funding.create');
-        Route::get('/funding/edit/{id}',[FundingAgenciesController::class,'edit'])->name('funding.edit');
-        Route::put('/funding/edit/{id}',[FundingAgenciesController::class,'update'])->name('funding.update');
-        Route::get('/funding/delete/{id}',[FundingAgenciesController::class,'destroy'])->name('funding.destroy');
+        Route::get('/funding', [FundingAgenciesController::class, 'index'])->name('funding.index');
+        Route::post('/funding', [FundingAgenciesController::class, 'create'])->name('funding.create');
+        Route::get('/funding/edit/{id}', [FundingAgenciesController::class, 'edit'])->name('funding.edit');
+        Route::put('/funding/edit/{id}', [FundingAgenciesController::class, 'update'])->name('funding.update');
+        Route::get('/funding/delete/{id}', [FundingAgenciesController::class, 'destroy'])->name('funding.destroy');
         // download pdf
-        Route::get('/funding/download',[FundingAgenciesController::class,'pdf']);
+        Route::get('/funding/download', [FundingAgenciesController::class, 'pdf']);
         // at a time one pdf
-        Route::get('/funding/pdfForm/{id}',[FundingAgenciesController::class,'pdfForm']);
+        Route::get('/funding/pdfForm/{id}', [FundingAgenciesController::class, 'pdfForm']);
+        // Project Details
+        Route::get('/projectdetail', [ProjectDetailController::class, 'index'])->name('projectdetail.index');
+        Route::post('/projectdetail', [ProjectDetailController::class, 'create'])->name('projectdetail.create');
+        Route::get('/projectdetail/edit/{id}', [ProjectDetailController::class, 'edit'])->name('projectdetail.edit');
+        Route::put('/projectdetail/edit/{id}', [ProjectDetailController::class, 'update'])->name('projectdetail.update');
+        Route::get('/projectdetail/delete/{id}', [ProjectDetailController::class, 'destroy'])->name('projectdetail.destroy');
+        // download pdf
+        Route::get('/projectdetail/download', [ProjectDetailController::class, 'pdf']);
+        // at a time one pdf
+        Route::get('/projectdetail/pdfForm/{id}', [ProjectDetailController::class, 'pdfForm']);
+        //  show all details for projects details page
+        Route::get('/projectdetails/showall/{id}', [ProjectDetailController::class, 'showall'])->name('projectdetails.showall');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/mail', [MailSettingController::class, 'index'])->name('mail.index');
