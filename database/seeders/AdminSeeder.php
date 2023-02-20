@@ -67,11 +67,16 @@ class AdminSeeder extends Seeder
         $permission = Permission::create(['name' => 'Invoice edit']);
         $permission = Permission::create(['name' => 'Invoice create']);
         $permission = Permission::create(['name' => 'Invoice delete']);
-        // invoice
+        // Fund RElese
         $permission = Permission::create(['name' => 'Fund access']);
         $permission = Permission::create(['name' => 'Fund edit']);
         $permission = Permission::create(['name' => 'Fund create']);
         $permission = Permission::create(['name' => 'Fund delete']);
+        // funding agency
+        $permission = Permission::create(['name' => 'FundingAgency access']);
+        $permission = Permission::create(['name' => 'FundingAgency edit']);
+        $permission = Permission::create(['name' => 'FundingAgency create']);
+        $permission = Permission::create(['name' => 'FundingAgency delete']);
 
         $permission = Permission::create(['name' => 'Role access']);
         $permission = Permission::create(['name' => 'Role edit']);
