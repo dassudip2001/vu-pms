@@ -4,7 +4,7 @@
             <div class="container mx-auto px-6 py-2">
                 <div class="text-right">
                   @can('Permission create')
-                    <a href="{{route('admin.permissions.create')}}" class="bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">New Permission</a>
+                    <a style="text-decoration: none" href="{{route('admin.permissions.create')}}" class="bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">New Permission</a>
                   @endcan
                 </div>
 
@@ -25,7 +25,7 @@
                         <td class="py-4 px-6 border-b border-grey-light">{{ $permission->name }}</td>
                         <td class="py-4 px-6 border-b border-grey-light text-right">
                           @can('Permission edit')
-                          <a href="{{route('admin.permissions.edit',$permission->id)}}" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
+                          <a style="text-decoration: none" href="{{route('admin.permissions.edit',$permission->id)}}" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
                           @endcan
 
                           @can('Permission delete')

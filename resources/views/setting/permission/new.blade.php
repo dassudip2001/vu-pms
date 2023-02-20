@@ -7,7 +7,7 @@
                   @csrf
                   @method('post')
                 <div class="flex flex-col space-y-2">
-                  <label for="role_name" class="text-gray-700 select-none font-medium">Permission Name</label>
+                  <label for="role_name" style="text-decoration: none" class="text-gray-700 select-none font-medium">Permission Name</label>
                   <input
                     id="role_name"
                     type="text"
