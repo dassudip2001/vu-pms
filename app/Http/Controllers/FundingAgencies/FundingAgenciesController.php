@@ -14,14 +14,22 @@ class FundingAgenciesController extends Controller
      *
      * @return array
      */
+    function __construct()
+    {
+        $this->middleware('role_or_permission:FundingAgency access|FundingAgency create|FundingAgency edit|FundingAgency delete', ['only' => ['index', 'show']]);
+        $this->middleware('role_or_permission:FundingAgency create', ['only' => ['create', 'store']]);
+        $this->middleware('role_or_permission:FundingAgency edit', ['only' => ['edit', 'update']]);
+        $this->middleware('role_or_permission:FundingAgency delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         try {
-            $agency=FundingAgency::all();
-            return view('funding.create',compact('agency'));
-        }catch (Exception $e){
+            $agency = FundingAgency::all();
+            return view('funding.create', compact('agency'));
+        } catch (Exception $e) {
 
-            return ["message" => $e->getMessage(),
+            return [
+                "message" => $e->getMessage(),
                 "status" => $e->getCode()
             ];
         }
@@ -35,20 +43,20 @@ class FundingAgenciesController extends Controller
     public function create(Request $request)
     {
 
-//        try {
+        //        try {
         $request->validate([
-            'agency_name'=>'required'
+            'agency_name' => 'required'
         ]);
-        $agency=new FundingAgency;
-        $agency->agency_name=$request->agency_name;
+        $agency = new FundingAgency;
+        $agency->agency_name = $request->agency_name;
         $agency->save();
-        return redirect(route('admin.funding.index'))->with('success','Funding Agency Created Successfully');
-//        }catch (Exception $e)
-//        {
-//            return ["message" => $e->getMessage(),
-//                "status" => $e->getCode()
-//            ];
-//        }
+        return redirect(route('admin.funding.index'))->with('success', 'Funding Agency Created Successfully');
+        //        }catch (Exception $e)
+        //        {
+        //            return ["message" => $e->getMessage(),
+        //                "status" => $e->getCode()
+        //            ];
+        //        }
     }
 
     /**
@@ -82,11 +90,12 @@ class FundingAgenciesController extends Controller
     public function edit($id)
     {
         try {
-            $agency=FundingAgency::find($id);
-            return view('funding.edit',compact('agency'));
-        }  catch (Exception $e){
+            $agency = FundingAgency::find($id);
+            return view('funding.edit', compact('agency'));
+        } catch (Exception $e) {
 
-            return ["message" => $e->getMessage(),
+            return [
+                "message" => $e->getMessage(),
                 "status" => $e->getCode()
             ];
         }
@@ -102,14 +111,13 @@ class FundingAgenciesController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $agency=FundingAgency::find($id);
-            $agency->agency_name=$request->agency_name;
+            $agency = FundingAgency::find($id);
+            $agency->agency_name = $request->agency_name;
             $agency->save();
-            return redirect(route('admin.funding.index'))->with('success','Funding Agency Update Successfully');
-
-        } catch (Exception $e)
-        {
-            return ["message" => $e->getMessage(),
+            return redirect(route('admin.funding.index'))->with('success', 'Funding Agency Update Successfully');
+        } catch (Exception $e) {
+            return [
+                "message" => $e->getMessage(),
                 "status" => $e->getCode()
             ];
         }
@@ -125,11 +133,11 @@ class FundingAgenciesController extends Controller
     {
         try {
             FundingAgency::destroy($id);
-            return redirect(route('admin.funding.index'))->with('success','Funding Agency Deleted Successfully');
+            return redirect(route('admin.funding.index'))->with('success', 'Funding Agency Deleted Successfully');
+        } catch (Exception $e) {
 
-        }catch (Exception $e){
-
-            return ["message" => $e->getMessage(),
+            return [
+                "message" => $e->getMessage(),
                 "status" => $e->getCode()
             ];
         }
