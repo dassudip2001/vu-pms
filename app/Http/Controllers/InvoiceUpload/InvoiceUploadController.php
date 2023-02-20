@@ -16,6 +16,14 @@ class InvoiceUploadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+        $this->middleware('role_or_permission:Invoice access|Invoice create|Invoice edit|Invoice delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Invoice create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Invoice edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Invoice delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $invoice = InvoiceUpload::all();
@@ -279,7 +287,7 @@ class InvoiceUploadController extends Controller
         // Get the search value from the request
         $search = $request->input('search');
 
-        // Search in the title and body columns from the posts table
+        // Search in the title and body columns from the Invoices table
         $invoiceupload = InvoiceUpload::query()
             ->where('name', 'LIKE', "%{$search}%")
             ->orWhere('bill_no', 'LIKE', "%{$search}%")
