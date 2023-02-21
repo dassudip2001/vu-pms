@@ -10,10 +10,10 @@
                 <div class="flex items-center">
                     <nav class="text-black text-lg hidden lg:flex items-center">
 
-                        @if (Route::has('admin.login'))
+                        {{-- @if (Route::has('admin.login'))
                             <a href="{{ route('admin.login') }}" class="py-2 px-2 flex hover:text-blue-500"><i
                                     class="fa-solid fa-user"></i>Login</a>
-                        @endif
+                        @endif --}}
 
                         {{-- @if (Route::has('login'))
                             @auth('front')
