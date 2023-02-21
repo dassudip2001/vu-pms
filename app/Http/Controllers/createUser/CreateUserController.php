@@ -131,7 +131,7 @@ class CreateUserController extends Controller
      */
     public function edit($id)
     {
-        if (Auth::user()->id == '1' || auth()->user()->id == $id + 1) {
+        // if (Auth::user()->id == '1' || auth()->user()->id == $id + 1) {
             $createUser = CreateUser::with(
                 [
                     'user' => function ($q) {
@@ -149,9 +149,9 @@ class CreateUserController extends Controller
                 ]
             )->find($id);
             return view('user.edit', compact('createUser'));
-        } else {
-            return "You cannot edit details ";
-        }
+        // } else {
+        //     return "You cannot edit details ";
+        // }
     }
 
     /**

@@ -350,7 +350,7 @@
                                                     <td>{{ $item->department->dept_name }}</td>
                                                     <td>{{ $item->faculty->fac_designtion }}</td>
                                                     @if ($item->faculty->fac_status != 'Dactive')
-                                                        <td style="color: green">{{ $item->faculty->fac_status }}</td>
+                                                        <td style="color: green"><i class="fa-sharp fa-solid fa-check"></i>{{ $item->faculty->fac_status }}</i></td>
                                                     @else
                                                     <td style="color: red">{{ $item->faculty->fac_status }}</td>
 
@@ -362,7 +362,7 @@
                                                         <a href=" {{ url('/admin/createuser/edit', $item->id) }} ">
                                                             <i class="fa-regular fa-pen-to-square"></i>
                                                         </a>
-                                                        <a href=" {{ url('/admin/createuser/delete', $item->id) }} ">
+                                                        <a style="color: red" href=" {{ url('/admin/createuser/delete', $item->id) }} ">
                                                             <button type="submit">
                                                                 <i class="fa-solid fa-trash">
                                                                 </i>
@@ -370,7 +370,7 @@
                                                         </a>
                                                     </th>
                                                     <th>
-                                                        <a href=" {{ url('/admin/createuser/pdfForm', $item->id) }} ">
+                                                        <a style="color: black" href=" {{ url('/admin/createuser/pdfForm', $item->id) }} ">
                                                             <i class="fa-regular fa-solid fa-print"></i>
                                                         </a>
                                                     </th>
