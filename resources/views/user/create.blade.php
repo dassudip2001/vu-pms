@@ -336,10 +336,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($createUser as $key=>$item)
+                                        @foreach ($createUser as $key => $item)
                                             @if (Auth::user()->id == '1' || Auth::id() == $item->user->id)
                                                 <tr>
-                                                    <td> {{$key+1}} </td>
+                                                    <td> {{ $key + 1 }} </td>
                                                     <td>{{ $item->faculty->fac_code }}</td>
                                                     <td>{{ $item->faculty->fac_title }}</td>
                                                     <td>{{ $item->user->name }}</td>
@@ -349,7 +349,12 @@
                                                     <td>{{ $item->faculty->fac_retirement }}</td>
                                                     <td>{{ $item->department->dept_name }}</td>
                                                     <td>{{ $item->faculty->fac_designtion }}</td>
-                                                    <td>{{ $item->faculty->fac_status }}</td>
+                                                    @if ($item->faculty->fac_status != 'Dactive')
+                                                        <td style="color: green">{{ $item->faculty->fac_status }}</td>
+                                                    @else
+                                                    <td style="color: red">{{ $item->faculty->fac_status }}</td>
+
+                                                    @endif
                                                     {{-- @endif --}}
                                                     {{-- @can('edit_user') --}}
                                                     {{-- @if (Auth::user()->id == '1' || Auth::id() == $item->user->id) --}}

@@ -248,16 +248,16 @@
                             <!-- Button trigger modal -->
                             <!-- success massage -->
 
-                            <a href=" {{ url('/admin/projectdetail/download') }} ">
+                            <a  style="text-decoration: none;" href=" {{ url('/admin/projectdetail/download') }} ">
                                 <i class="fa-solid fa-print"></i>Print All
                             </a>
                             <h6>Project Details</h6>
                             <hr>
-                            @if (session('success'))
+                            {{-- @if (session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
                                 </div>
-                            @endif
+                            @endif --}}
                             <br>
                             {{-- <form action=" {{ route('projectdetail.search') }} " method="GET" class="d-flex">
                                 <input class="form-control me-2" type="text" name="search"
@@ -316,13 +316,13 @@
                                                     <a href=" {{ url('/admin/projectdetail/edit', $pro->id) }} ">
                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                     </a>
-                                                    <a href=" {{ url('/admin/projectdetail/delete', $pro->id) }} ">
+                                                    <a style="color: red" href=" {{ url('/admin/projectdetail/delete', $pro->id) }} ">
                                                         <button type="submit"><i
                                                                 class="fa-solid fa-trash"></i></button>
                                                     </a>
                                                 </th>
                                                 <th>
-                                                    <a href=" {{ url('/admin/projectdetail/pdfForm', $pro->id) }} ">
+                                                    <a style="color: black" href=" {{ url('/admin/projectdetail/pdfForm', $pro->id) }} ">
                                                         <i class="fa-solid fa-print"></i>
                                                     </a>
 
