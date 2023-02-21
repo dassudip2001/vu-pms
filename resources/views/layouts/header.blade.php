@@ -38,14 +38,14 @@
                 class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10"
                 style="display: none;">
                 <a style="text-decoration: none" href="{{ route('admin.profile') }}"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"><i class="fa-sharp fa-solid fa-user"></i>Profile</a>
                     <a style="text-decoration: none" href="{{ route('chatify') }}"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Massenger</a>
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"><i class="fa-sharp fa-solid fa-envelope"></i>Massenger</a>
                 <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
                     <a style="text-decoration: none" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
                                                 this.closest('form').submit();"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</a>
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"><i class="fa-sharp fa-solid fa-right-to-bracket"></i>Logout</a>
                 </form>
             </div>
         </div>
