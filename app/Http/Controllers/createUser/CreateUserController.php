@@ -8,6 +8,7 @@ use App\Models\Department;
 use App\Models\Faculty;
 use App\Models\User;
 use Exception;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,9 +21,9 @@ class CreateUserController extends Controller
      */
     function __construct()
     {
-        $this->middleware('role_or_permission:User access|User create|User edit|User delete', ['only' => ['index','show']]);
-        $this->middleware('role_or_permission:User create', ['only' => ['create','store']]);
-        $this->middleware('role_or_permission:User edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:User access|User create|User edit|User delete', ['only' => ['index', 'show']]);
+        $this->middleware('role_or_permission:User create', ['only' => ['create', 'store']]);
+        $this->middleware('role_or_permission:User edit', ['only' => ['edit', 'update']]);
         $this->middleware('role_or_permission:User delete', ['only' => ['destroy']]);
     }
     public function index()
@@ -164,48 +165,48 @@ class CreateUserController extends Controller
     {
 
         // if (Auth::user()->id == '1' || Auth::user()->id == $id+2) {
-            try {
-                $this->validate($request, [
-                    'name' => 'required|string|max:255',
-                    //                'email' => 'required|string|email|max:255|unique:users',
-                    'password' => 'required|string|confirmed|min:8',
-                    'fac_title' => 'required',
-                    'fac_designtion' => 'required',
-                    'fac_phone' => 'required',
-                    'fac_status' => 'required',
-                    'fac_description' => 'required',
-                ]);
-                $fields = $request->only([
-                    'name', 'password', 'fac_title', 'fac_designtion', 'fac_phone', 'fac_status', 'fac_description',
-                ]);
-                $fc = CreateUser::find($id)->faculty_id;
-                $uc = CreateUser::find($id)->user_id;
-                //            faculty Delete
-                $faculty = Faculty::find($fc);
-                //            $faculty->fac_code=$fields->fac_code;
-                $faculty->fac_title = $fields['fac_title'];
-                $faculty->fac_designtion = $fields['fac_designtion'];
-                $faculty->fac_phone = $fields['fac_phone'];
-                $faculty->fac_status = $fields['fac_status'];
-                $faculty->fac_description = $fields['fac_description'];
-                $faculty->save();
-                //            user delete
-                $user = User::find($uc);
-                $user->name = $fields['name'];
-                $user->password = bcrypt($fields['password']);
-                $user->save();
-                //            create user delete
-                CreateUser::find($id)->save();
-                return redirect(route('admin.usercreate.index'))
-                    ->with('success', 'User Update Successfully');
-                //code...
-            } catch (Exception $e) {
+        try {
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+                //                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|confirmed|min:8',
+                'fac_title' => 'required',
+                'fac_designtion' => 'required',
+                'fac_phone' => 'required',
+                'fac_status' => 'required',
+                'fac_description' => 'required',
+            ]);
+            $fields = $request->only([
+                'name', 'password', 'fac_title', 'fac_designtion', 'fac_phone', 'fac_status', 'fac_description',
+            ]);
+            $fc = CreateUser::find($id)->faculty_id;
+            $uc = CreateUser::find($id)->user_id;
+            //            faculty Delete
+            $faculty = Faculty::find($fc);
+            //            $faculty->fac_code=$fields->fac_code;
+            $faculty->fac_title = $fields['fac_title'];
+            $faculty->fac_designtion = $fields['fac_designtion'];
+            $faculty->fac_phone = $fields['fac_phone'];
+            $faculty->fac_status = $fields['fac_status'];
+            $faculty->fac_description = $fields['fac_description'];
+            $faculty->save();
+            //            user delete
+            $user = User::find($uc);
+            $user->name = $fields['name'];
+            $user->password = bcrypt($fields['password']);
+            $user->save();
+            //            create user delete
+            CreateUser::find($id)->save();
+            return redirect(route('admin.usercreate.index'))
+                ->with('success', 'User Update Successfully');
+            //code...
+        } catch (Exception $e) {
 
-                return [
-                    "message" => $e->getMessage(),
-                    "status" => $e->getCode()
-                ];
-            }
+            return [
+                "message" => $e->getMessage(),
+                "status" => $e->getCode()
+            ];
+        }
         // }
     }
 
@@ -235,5 +236,40 @@ class CreateUserController extends Controller
                 "status" => $e->getCode()
             ];
         }
+    }
+
+    // pdf generate all pdf
+    public function pdf()
+    {
+        $createUser2 = CreateUser::all();
+        $pdf = PDF::loadView('user.print', compact('createUser2'));
+        return $pdf->download('user.pdf');
+    }
+    // generate pdf one row
+    public function pdfForm(Request $request, $id)
+    {
+        $createUser1 = CreateUser::all()->where('id', $id);
+        $pdf = PDF::loadView('user.pdf_download', compact('createUser1'));
+        return $pdf->download('user.pdf');
+    }
+
+    // search
+
+    public function search(Request $request)
+    {
+        // Get the search value from the request
+        $search = $request->input('search');
+
+
+
+        // Search in the title and body columns from the posts table
+        $posts = User::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            //            ->orWhere('dept_code', 'LIKE', "%{$search}%")
+            ->get();
+
+
+        // Return the search view with the resluts compacted
+        return view('user.search', compact('posts'));
     }
 }

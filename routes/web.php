@@ -79,6 +79,10 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/createuser/edit/{id}', [CreateUserController::class, 'edit'])->name('usercreate.edit');
         Route::put('/createuser/edit/{id}', [CreateUserController::class, 'update'])->name('usercreate.update');
         Route::get('/createuser/delete/{id}', [CreateUserController::class, 'destroy'])->name('usercreate.destroy');
+        // download pdf
+        Route::get('/createuser/download', [CreateUserController::class, 'pdf']);
+        // at a time one pdf
+        Route::get('/createuser/pdfForm/{id}', [CreateUserController::class, 'pdfForm']);
         //    Budget Head
         Route::get('/budget', [BudgetHeadController::class, 'index'])->name('budget.index');
         Route::post('/budget', [BudgetHeadController::class, 'create'])->name('budget.create');

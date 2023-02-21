@@ -289,7 +289,7 @@
                             </div>
                             @role('admin')
                                 <a class=" "style="border: none;text-decoration: none;"
-                                    href="{{ url('/createuser/download') }}"><i class="fa-solid fa-print"></i>Print
+                                    href="{{ url('/admin/createuser/download') }}"><i class="fa-solid fa-print"></i>Print
                                     All</a>
 
                                 <a class="btn btn-primary float-end" data-bs-toggle="modal" href="#exampleModalToggle"
@@ -365,7 +365,7 @@
                                                         </a>
                                                     </th>
                                                     <th>
-                                                        <a href=" {{ url('/createuser/pdfForm', $item->id) }} ">
+                                                        <a href=" {{ url('/admin/createuser/pdfForm', $item->id) }} ">
                                                             <i class="fa-regular fa-solid fa-print"></i>
                                                         </a>
                                                     </th>
