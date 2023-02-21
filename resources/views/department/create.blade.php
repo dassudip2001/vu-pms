@@ -12,7 +12,7 @@
 
         <div class="container  mt-4">
             <div class="row">
-                <div class="col">
+                <div class="col ">
                     @role('admin')
                         <div class="card max-h-96">
 
@@ -87,11 +87,11 @@
                     @endrole
                 </div>
             </div>
-            <div class="col">
+            <div class="col ">
                 <div class="card max-h-96">
                     <div class="card-title mx-2 mt-2">
                         <a class="  float-end" href="{{ url('/admin/department/download') }} "
-                            style="border: none;
+                            style="border: none;color: black;
               text-decoration: none;"><i
                                 class="fa-solid fa-print"></i>Print All</a>
                         <br>
@@ -128,9 +128,9 @@
                             </thead>
                             <div class="overflow-auto">
                                 <tbody>
-                                    @foreach ($department as $key =>$item)
+                                    @foreach ($department as $key => $item)
                                         <tr>
-                                            <td>{{$key+1}}</td>
+                                            <td>{{ $key + 1 }}</td>
                                             {{-- <td>{{ $item->id }}</td> --}}
                                             <td> {{ $item->dept_name }}</td>
                                             <td> {{ $item->dept_code }}</td>
@@ -143,13 +143,13 @@
                                                     <a href=" {{ url('/admin/department/edit', $item->id) }} ">
                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                     </a>
-                                                    <a href=" {{ url('/admin/department/delete', $item->id) }} ">
+                                                    <a style="color: red" href=" {{ url('/admin/department/delete', $item->id) }} ">
                                                         <button type="submit"><i class="fa-solid fa-trash"></i></button>
 
                                                 </td>
                                                 </a>
                                                 <td>
-                                                    <a href=" {{ url('/admin/department/pdfForm', $item->id) }} ">
+                                                    <a style="color: black" href=" {{ url('/admin/department/pdfForm', $item->id) }} ">
                                                         <i class="fa-regular fa-solid fa-print"></i>
                                                     </a>
 
@@ -157,11 +157,21 @@
                                             @endrole
                                         </tr>
                                     @endforeach
+
                                 </tbody>
+
                             </div>
+
                         </table>
+
                     </div>
+                    <div class="con">
+                        {{ $department->onEachSide(5)->links() }}
+
+                    </div>
+
                 </div>
+
             </div>
         </div>
         </div>

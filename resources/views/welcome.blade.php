@@ -828,10 +828,5 @@
         </div>
     </main>
 
-
-
-
-
-
-
+    @include('sweetalert::alert')
 </x-front-guest-layout>
