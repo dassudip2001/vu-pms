@@ -75,19 +75,26 @@
                             </tr>
                         </thead>
                         <div class="overflow-auto">
-                            @foreach ($invoice as $key=>$inv)
+                            @foreach ($invoice as $key => $inv)
                                 <tbody>
                                     <tr>
-                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $inv->name }}</td>
                                         <td>{{ $inv->file }}</td>
                                         <td> {{ $inv->bill_no }} </td>
                                         <td> {{ $inv->amount }} </td>
                                         <td> {{ $inv->description }}</td>
-                                        <td> {{ $inv->status }}</td>
+                                        @if ($inv->status == 'Pending')
+                                            <td style="color: blue"> {{ $inv->status }}</td>
+                                        @elseif ($inv->status == 'Approved')
+                                            <td style="color: rgb(107, 222, 36)"> {{ $inv->status }}</td>
+                                        @else
+                                            <td  style="color: rgb(222, 58, 36)"> {{ $inv->status }}</td>
+                                        @endif
                                         @role('admin')
-                                            <td> <a class="btn-success"
-                                                    href="{{ url('/admin/invoiceuoload/edit', $inv->id) }}">Approved</a></td>
+                                            <td> <a style="text-decoration: none" class="btn-success"
+                                                    href="{{ url('/admin/invoiceuoload/edit', $inv->id) }}">Click To Change Status</a>
+                                            </td>
                                         @endrole
                                         <!-- <td> <a class="btn-denger" href="{{ url('/cancle', $inv->id) }}">Cancle</a></td> -->
 
@@ -184,8 +191,7 @@
                                                                     <label for="formFileLg" class="form-label">Please
                                                                         Upload Invoice</label>
                                                                     <input class="form-control form-control-lg"
-                                                                        id="formFileLg" name="file"
-                                                                        type="file">
+                                                                        id="formFileLg" name="file" type="file">
                                                                 </div>
                                                             </div>
                                                         </div>

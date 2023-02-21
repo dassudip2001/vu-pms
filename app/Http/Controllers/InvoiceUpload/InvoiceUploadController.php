@@ -154,7 +154,7 @@ class InvoiceUploadController extends Controller
             $agency = InvoiceUpload::find($id);
             $agency->status = $request->status;
             $agency->save();
-            return redirect(route('admin.invoiceuoload.index'))->with('success', 'Funding Agency Update Successfully');
+            return redirect(route('admin.invoiceuoload.index'))->with('success', 'Status  Update Successfully');
         } catch (Exception $e) {
             return [
                 "message" => $e->getMessage(),
