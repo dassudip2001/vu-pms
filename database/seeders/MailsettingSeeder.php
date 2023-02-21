@@ -17,9 +17,9 @@ class MailsettingSeeder extends Seeder
         Mailsetting::create([
             'mail_transport'            =>'smtp',
             'mail_host'                 =>'smtp.mailtrap.io',
-            'mail_port'                 =>'2525',
-            'mail_username'             =>'ed3caa94a48fd1',
-            'mail_password'             =>'baf29d92154c72',
+            'mail_port'                 =>'587',
+            'mail_username'             =>'580f02db8eb225',
+            'mail_password'             =>'f83f5d0947941d',
             'mail_encryption'           =>'tls',
             'mail_from'                 => 'sudip5428@gmail.com',
         ]);
