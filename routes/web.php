@@ -70,6 +70,8 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/department/edit/{id}', [DepartmentController::class, 'edit'])->name('edit');
         Route::put('/department/edit/{id}', [DepartmentController::class, 'update'])->name('update');
         Route::get('/department/delete/{id}', [DepartmentController::class, 'destroy'])->name('destroy');
+        Route::get('/search', [DepartmentController::class, 'search'])->name('search');
+
         // download pdf
         Route::get('/department/download', [DepartmentController::class, 'pdf']);
         // at a time one pdf

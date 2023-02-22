@@ -135,7 +135,7 @@ class DepartmentController extends Controller
 
             $department->description = $request->description;
             $department->save();
-            return redirect(route('admin.index'))->withSuccessMassage('success', 'Department Update Successfully');
+            return redirect(route('admin.index'))->with('success', 'Department Update Successfully');
         } catch (Exception $e) {
 
             return [
@@ -155,7 +155,7 @@ class DepartmentController extends Controller
     {
         try {
             Department::destroy($id);
-            return redirect(route('admin.index'))->withSuccessMassage('success', 'Department Delete Successfully');
+            return redirect(route('admin.index'))->with('success', 'Department Delete Successfully');
         } catch (Exception $e) {
 
             return [

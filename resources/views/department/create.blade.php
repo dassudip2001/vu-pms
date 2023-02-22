@@ -96,10 +96,10 @@
                                 class="fa-solid fa-print"></i>Print All</a>
                         <br>
                         <hr>
-                        {{-- <form action="{{ route('search') }}" method="GET" class="d-flex">
+                        <form action="{{ route('admin.search') }}" method="GET" class="d-flex">
                 <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search" required>
                 <button class="btn btn-outline-success" type="submit">Search</button>
-              </form> --}}
+              </form>
                         {{-- <form action="{{ route('search') }}" method="GET">
                   <input type="text" name="search" required/>
                   <button type="submit">Search</button>
@@ -143,7 +143,7 @@
                                                     <a href=" {{ url('/admin/department/edit', $item->id) }} ">
                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                     </a>
-                                                    <a style="color: red" href=" {{ url('/admin/department/delete', $item->id) }} ">
+                                                    <a style="color: red" href=" {{ url('/admin/department/delete', $item->id) }} " onclick="return confirm('Are You Sure You want to Delete This Record')">
                                                         <button type="submit"><i class="fa-solid fa-trash"></i></button>
 
                                                 </td>
