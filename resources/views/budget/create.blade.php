@@ -87,11 +87,11 @@
                             All
                         </a>
                         <br>
-{{--                        <form action=" {{ route('budget.search') }} " method="GET" class="d-flex">--}}
-{{--                            <input class="form-control me-2  type="text" name="search" placeholder="Search"--}}
-{{--                                aria-label="Search" required>--}}
-{{--                            <button class="btn btn-outline-success" type="submit">Search</button>--}}
-{{--                        </form>--}}
+                       <form action=" {{ route('admin.budget.search') }} " method="GET" class="d-flex">
+                           <input class="form-control me-2  type="text" name="search" placeholder="Search"
+                               aria-label="Search" required>
+                           <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
                         <br>
                         <h6>Budget Details</h6>
                     </div>

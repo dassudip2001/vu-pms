@@ -91,6 +91,8 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/budget/edit/{id}', [BudgetHeadController::class, 'edit'])->name('budget.edit');
         Route::put('/budget/edit/{id}', [BudgetHeadController::class, 'update'])->name('budget.update');
         Route::get('/budget/delete/{id}', [BudgetHeadController::class, 'destroy'])->name('budget.destroy');
+        Route::get('/budgetssearch', [BudgetHeadController::class, 'search'])->name('budget.search');
+
         // download pdf
         Route::get('/budget/download', [BudgetHeadController::class, 'pdf']);
         // at a time one pdf
