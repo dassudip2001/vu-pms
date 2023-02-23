@@ -132,6 +132,8 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/download/{file}', [InvoiceUploadController::class, 'download']);
         Route::get('/view/{id}', [InvoiceUploadController::class, 'view']);
         Route::get('invoiceuoload/delete/{id}', [InvoiceUploadController::class, 'destroy']);
+        Route::get('/invoiceupload', [InvoiceUploadController::class, 'search'])->name('invoiceupload.search');
+
 
         Route::get('/invoiceuoload/edit/{id}', [InvoiceUploadController::class, 'edit'])->name('invoiceuoload.edit');
         Route::put('/invoiceuoload/edit/{id}', [InvoiceUploadController::class, 'update'])->name('invoiceuoload.update');

@@ -24,11 +24,11 @@
                 <h6>Upload</h6>
                 <br>
                 <hr>
-                {{-- <form action="{{ route('invoiceupload.search') }}" method="GET" class="d-flex">
+                <form action="{{ route('admin.invoiceupload.search') }}" method="GET" class="d-flex">
                     <input class="form-control me-2 mt-2" type="text" name="search" placeholder="Search by Bill no"
                         aria-label="Search" required>
                     <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> --}}
+                </form>
 
             </div>
 
