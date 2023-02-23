@@ -123,6 +123,7 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/projectdetail/pdfForm/{id}', [ProjectDetailController::class, 'pdfForm']);
         //  show all details for projects details page
         Route::get('/projectdetails/showall/{id}', [ProjectDetailController::class, 'showall'])->name('projectdetails.showall');
+        Route::get('/projectdetailsearch', [ProjectDetailController::class,'search'])->name('projectdetail.search');
 
 
         // invoice upload

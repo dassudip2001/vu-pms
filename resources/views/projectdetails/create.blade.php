@@ -259,11 +259,11 @@
                                 </div>
                             @endif --}}
                             <br>
-                            {{-- <form action=" {{ route('projectdetail.search') }} " method="GET" class="d-flex">
+                            <form action=" {{ route('admin.projectdetail.search') }} " method="GET" class="d-flex">
                                 <input class="form-control me-2" type="text" name="search"
                                     placeholder="Search Project Title" aria-label="Search" required>
                                 <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form> --}}
+                            </form>
                             <br>
                         </div>
                         <div class="card-body p-0">
