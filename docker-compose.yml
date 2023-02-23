@@ -12,13 +12,6 @@ services:
     depends_on:
       - admin_db
 
-  # admin_queue:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   command: 'php artisan queue:work'
-  #   depends_on:
-  #     - admin_db
 
   admin_db:
     image: mysql:lates
