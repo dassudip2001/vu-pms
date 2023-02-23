@@ -123,7 +123,7 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/projectdetail/pdfForm/{id}', [ProjectDetailController::class, 'pdfForm']);
         //  show all details for projects details page
         Route::get('/projectdetails/showall/{id}', [ProjectDetailController::class, 'showall'])->name('projectdetails.showall');
-        Route::get('/projectdetailsearch', [ProjectDetailController::class,'search'])->name('projectdetail.search');
+        Route::get('/projectdetailsearch', [ProjectDetailController::class, 'search'])->name('projectdetail.search');
 
 
         // invoice upload
@@ -146,6 +146,8 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::put('/relesefund/edit/{id}', [ReleseFundController::class, 'update'])->name('relesefund.update');
         Route::get('/relesefund/delete/{id}', [ReleseFundController::class, 'destroy'])->name('relesefund.destroy');
         // all pdf
+        Route::get('/relesefundsearch', [ReleseFundController::class, 'search'])->name('relesefund.search');
+
         Route::get('/relesefund/download', [ReleseFundController::class, 'pdf']);
         // at a time one pdf
         Route::get('/relesefund/pdfForm/{id}', [ReleseFundController::class, 'pdfForm']);
