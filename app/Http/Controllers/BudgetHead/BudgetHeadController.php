@@ -24,7 +24,10 @@ class BudgetHeadController extends Controller
     public function index()
     {
         try {
-            $budget=BudgetHead::all();
+            $budget=BudgetHead::paginate(4);
+            if (session('success_massage')) {
+                alert()->success('SuccessAlert', 'Budget Created Successfully.');
+            } 
             return view('budget.create',compact('budget'));
         }catch (Exception $e){
 
@@ -52,7 +55,7 @@ class BudgetHeadController extends Controller
             $budget->budget_title=$request->budget_title;
             $budget->budget_type=$request->budget_type;
             $budget->save();
-            return redirect(route('admin.budget.index'))->with('success','Budget Created Successfully');
+            return redirect(route('admin.budget.index'))->withSuccessMassage('success','Budget Created Successfully');
 //        }catch (Exception $e)
 //        {
 //            return ["message" => $e->getMessage(),

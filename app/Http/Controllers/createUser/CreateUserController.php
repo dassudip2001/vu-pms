@@ -29,7 +29,10 @@ class CreateUserController extends Controller
     public function index()
     {
         try {
-            $createUser = CreateUser::all();
+            $createUser = CreateUser::paginate(4);
+            if (session('success_massage')) {
+                alert()->success('SuccessAlert', 'Budget Created Successfully.');
+            }
             //        $faculty=Faculty::all();
             $data = Department::all();
             return view('user.create', compact('data', 'createUser',));
@@ -92,7 +95,7 @@ class CreateUserController extends Controller
         $pivot->faculty_id = $faculty->id;
         $pivot->department_id = $fields['department_id'];
         $pivot->save();
-        return redirect(route('admin.usercreate.index'))->with('success', 'User Created Successfully');
+        return redirect(route('admin.usercreate.index'))->withSuccessMassage('success', 'User Created Successfully');
         //        }catch (Exception $e)
         //        {
         //            return ["message" => $e->getMessage(),

@@ -80,17 +80,17 @@
             <div class="col">
                 <div class="card max-h-96">
                     <div class="card-title mx-2 mt-2">
-                        <a style="text-decoration: none" class="float-end" href=" {{ url('/admin/budget/download') }} ">
+                        <a style="text-decoration: none" style="color: black" class="float-end" href=" {{ url('/admin/budget/download') }} ">
                             <i
                                 class="fa-regular fa-solid fa-print"style="border: none;
                   text-decoration: none;"></i>Print
                             All
                         </a>
                         <br>
-                       <form action=" {{ route('admin.budget.search') }} " method="GET" class="d-flex">
-                           <input class="form-control me-2  type="text" name="search" placeholder="Search"
-                               aria-label="Search" required>
-                           <button class="btn btn-outline-success" type="submit">Search</button>
+                        <form action=" {{ route('admin.budget.search') }} " method="GET" class="d-flex">
+                            <input class="form-control me-2  type="text" name="search" placeholder="Search"
+                                aria-label="Search" required>
+                            <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                         <br>
                         <h6>Budget Details</h6>
@@ -114,9 +114,9 @@
                         </thead>
                         <div class="overflow-auto">
                             <tbody>
-                                @foreach ($budget as $key=>$item)
+                                @foreach ($budget as $key => $item)
                                     <tr>
-                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $key + 1 }}</td>
                                         <td> {{ $item->budget_title }}</td>
 
                                         <td> {{ $item->budget_type }}</td>
@@ -126,13 +126,13 @@
                                                 <a href=" {{ url('/admin/budget/edit', $item->id) }} ">
                                                     <i class="fa-regular fa-pen-to-square"></i>
                                                 </a>
-                                                <a href=" {{ url('/admin/budget/delete', $item->id) }} ">
+                                                <a style="color: red" href=" {{ url('/admin/budget/delete', $item->id) }} ">
                                                     <i class="fa-solid fa-trash"></i>
 
                                             </td>
                                             </a>
                                             <th>
-                                                <a href=" {{ url('/admin/budget/pdfForm', $item->id) }} ">
+                                                <a style="color: black" href=" {{ url('/admin/budget/pdfForm', $item->id) }} ">
                                                     <i class="fa-regular fa-solid fa-print"></i>
                                                 </a>
 
@@ -142,10 +142,15 @@
                                 @endforeach
                             </tbody>
                         </div>
+                        {{ $budget->onEachSide(5)->links() }}
+
                     </table>
+
                     <!-- </div> -->
                 </div>
+
             </div>
+
         </div>
         </div>
 
