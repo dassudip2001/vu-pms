@@ -305,11 +305,11 @@
                             @endif --}}
                             <hr>
                             <br>
-                            {{-- <form action="{{ route('usercreate.search') }}" method="GET" class="d-flex">
+                            <form action="{{ route('admin.usercreate.search') }}" method="GET" class="d-flex">
                                 <input class="form-control me-2  type="text" name="search" placeholder="Search"
                                     aria-label="Search" required>
                                 <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form> --}}
+                            </form>
                             <br>
 
                             <h6> User Details</h6>
@@ -381,6 +381,8 @@
                                     </tbody>
                                 </table>
                             </div>
+                        {{ $createUser->onEachSide(5)->links() }}
+
                         </div>
                     </div>
                 </div>

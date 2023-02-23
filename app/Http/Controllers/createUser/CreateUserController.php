@@ -31,7 +31,7 @@ class CreateUserController extends Controller
         try {
             $createUser = CreateUser::paginate(4);
             if (session('success_massage')) {
-                alert()->success('SuccessAlert', 'Budget Created Successfully.');
+                alert()->success('SuccessAlert', 'User Created Successfully.');
             }
             //        $faculty=Faculty::all();
             $data = Department::all();

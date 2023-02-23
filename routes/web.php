@@ -85,6 +85,8 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/createuser/download', [CreateUserController::class, 'pdf']);
         // at a time one pdf
         Route::get('/createuser/pdfForm/{id}', [CreateUserController::class, 'pdfForm']);
+        Route::get('/usersearch', [CreateUserController::class, 'search'])->name('usercreate.search');
+
         //    Budget Head
         Route::get('/budget', [BudgetHeadController::class, 'index'])->name('budget.index');
         Route::post('/budget', [BudgetHeadController::class, 'create'])->name('budget.create');
