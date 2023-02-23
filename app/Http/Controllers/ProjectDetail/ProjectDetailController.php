@@ -569,33 +569,33 @@ foreach($request->budget_id as $key=>$insert){
     }
 
     // pdf generate all pdf
-//     public function pdf(){
-//         $createUser=DB::table('create_users')
-//         ->join('faculties','faculties.id','=','create_users.id')
-//         ->join('departments','departments.id','=','create_users.department_id')
-//         ->join('users','users.id','=','create_users.user_id')
-//         ->join('projects','projects.create_user_id','=','create_users.user_id')
-//         ->join('project_details','project_details.project_id','=','projects.id')
-//         ->join('budget_heads','budget_heads.id','=','project_details.budget_id')
-//         ->join('funding_agencies','funding_agencies.id','=','projects.funding_agency_id')
-//         ->get();
-//         $pdf=PDF::loadView('projectdetails.print',compact('createUser'));
-//         return $pdf->download('project.pdf');
-//    }
-//     // generate pdf one row
-//     public function pdfForm(Request $request,$id){
-//     $createUser1 =DB::table('create_users')
-//     ->join('faculties','faculties.id','=','create_users.id')
-//     ->join('departments','departments.id','=','create_users.department_id')
-//     ->join('users','users.id','=','create_users.user_id')
-//     ->join('projects','projects.create_user_id','=','create_users.user_id')
-//     ->join('project_details','project_details.project_id','=','projects.id')
-//     ->join('budget_heads','budget_heads.id','=','project_details.budget_id')
-//     ->join('funding_agencies','funding_agencies.id','=','projects.funding_agency_id')
-//     ->get()->where('project_id',$id);
-//     $pdf=PDF::loadView('projectdetails.pdf_download',compact('createUser1'));
-//     return $pdf->download('project.pdf');
-//     }
+    public function pdf(){
+        $createUser=DB::table('create_users')
+        ->join('faculties','faculties.id','=','create_users.id')
+        ->join('departments','departments.id','=','create_users.department_id')
+        ->join('users','users.id','=','create_users.user_id')
+        ->join('projects','projects.create_user_id','=','create_users.user_id')
+        ->join('project_details','project_details.project_id','=','projects.id')
+        ->join('budget_heads','budget_heads.id','=','project_details.budget_id')
+        ->join('funding_agencies','funding_agencies.id','=','projects.funding_agency_id')
+        ->get();
+        $pdf=PDF::loadView('projectdetails.print',compact('createUser'));
+        return $pdf->download('project.pdf');
+   }
+    // generate pdf one row
+    public function pdfForm(Request $request,$id){
+    $createUser1 =DB::table('create_users')
+    ->join('faculties','faculties.id','=','create_users.id')
+    ->join('departments','departments.id','=','create_users.department_id')
+    ->join('users','users.id','=','create_users.user_id')
+    ->join('projects','projects.create_user_id','=','create_users.user_id')
+    ->join('project_details','project_details.project_id','=','projects.id')
+    ->join('budget_heads','budget_heads.id','=','project_details.budget_id')
+    ->join('funding_agencies','funding_agencies.id','=','projects.funding_agency_id')
+    ->get()->where('project_id',$id);
+    $pdf=PDF::loadView('projectdetails.pdf_download',compact('createUser1'));
+    return $pdf->download('project.pdf');
+    }
 
 
     // search module
