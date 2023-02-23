@@ -60,16 +60,17 @@
                 <div class="card">
                     <div class="card-title mx-2 mt-2">
                         <a class="  float-end"
-                            href="{{ url('/admin/funding/download') }}"style="border: none;
+                            href="{{ url('/admin/funding/download') }}"style="border: none;color: black;
           text-decoration: none;"><i
                                 class="fa-solid fa-print"></i>Print All</a>
 
                         <h6>Funding Agency Details</h6>
                         <br>
-                        {{--                        <form action="{{route('funding.search')}}" method="GET" class="d-flex"> --}}
-                        {{--                            <input class="form-control me-2  type="text" name="search" placeholder="Search" aria-label="Search" required> --}}
-                        {{--                            <button class="btn btn-outline-success" type="submit">Search</button> --}}
-                        {{--                        </form> --}}
+                        <form action="{{ route('admin.funding.search') }}" method="GET" class="d-flex">
+                            <input class="form-control me-2  type="text" name="search" placeholder="Search"
+                                aria-label="Search" required>
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
                         <br>
                     </div>
 
@@ -89,23 +90,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($agency as $key=>$item)
+                                @foreach ($agency as $key => $item)
                                     <tr>
-                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $key + 1 }}</td>
                                         <td> {{ $item->agency_name }}</td>
                                         @role('admin')
                                             <td>
 
-                                                <a href=" {{ url('/admin/funding/edit', $item->id) }} ">
+                                                <a  href=" {{ url('/admin/funding/edit', $item->id) }} ">
                                                     <i class="fa-regular fa-pen-to-square"></i>
                                                 </a>
-                                                <a href=" {{ url('/admin/funding/delete', $item->id) }} ">
+                                                <a style="color: rgb(215, 38, 38)" href=" {{ url('/admin/funding/delete', $item->id) }} ">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
 
                                             </td>
                                             <td>
-                                                <a href=" {{ url('/funding/pdfForm', $item->id) }} ">
+                                                <a style="color: black" href=" {{ url('/funding/pdfForm', $item->id) }} ">
                                                     <i class="fa-regular fa-solid fa-print"></i>
                                                 </a>
 
@@ -116,6 +117,8 @@
                             </tbody>
                         </table>
                     </div>
+                    {{ $agency->onEachSide(5)->links() }}
+
                     <!-- </div> -->
                 </div>
             </div>

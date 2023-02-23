@@ -24,7 +24,10 @@ class FundingAgenciesController extends Controller
     public function index()
     {
         try {
-            $agency = FundingAgency::all();
+            $agency = FundingAgency::paginate(4);
+            if (session('success_massage')) {
+                alert()->success('SuccessAlert', 'Funding Agency Created Successfully.');
+            }
             return view('funding.create', compact('agency'));
         } catch (Exception $e) {
 
@@ -50,7 +53,7 @@ class FundingAgenciesController extends Controller
         $agency = new FundingAgency;
         $agency->agency_name = $request->agency_name;
         $agency->save();
-        return redirect(route('admin.funding.index'))->with('success', 'Funding Agency Created Successfully');
+        return redirect(route('admin.funding.index'))->withSuccessMassage('success', 'Funding Agency Created Successfully');
         //        }catch (Exception $e)
         //        {
         //            return ["message" => $e->getMessage(),

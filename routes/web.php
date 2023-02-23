@@ -105,6 +105,8 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/funding/edit/{id}', [FundingAgenciesController::class, 'edit'])->name('funding.edit');
         Route::put('/funding/edit/{id}', [FundingAgenciesController::class, 'update'])->name('funding.update');
         Route::get('/funding/delete/{id}', [FundingAgenciesController::class, 'destroy'])->name('funding.destroy');
+        Route::get('/fundingsearch', [FundingAgencyController::class, 'search'])->name('funding.search');
+
         // download pdf
         Route::get('/funding/download', [FundingAgenciesController::class, 'pdf']);
         // at a time one pdf
