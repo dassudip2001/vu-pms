@@ -38,8 +38,18 @@
                             <div class="col">
                                 <!-- Budget code -->
                                 <div class="mb-6">
-                                    <label for="budget_type">Budget Code</label>
-                                    <input type="text" class="form-control form-control-sm" value="{{$budget->budget_type}}" name="budget_type"  id="budget_type" aria-describedby="budget_type" placeholder="Enter Your Budget Type">
+                                    <label for="budget_type">Budget Type</label>
+                                    <select name="budget_type"
+                                                    class="form-select form-select-sm @error('budget_type') is-invalid @enderror"
+                                                    aria-label=".form-select-sm example">
+                                                    <option selected hidden>Budget Type</option>
+                                                    <option value="Recurring"{{ $budget->budget_type =="Recurring" ? 'selected' : '' }}>Recurring</option>
+                                                    <option value="Non-Recurring"{{ $budget->budget_type =="Non-Recurring" ? 'selected' : '' }}>Non-Recurring</option>
+
+                                                    <!-- <option>Recurring</option> -->
+                                                    <!-- <option>Non-Recurring</option> -->
+                                                </select>
+                                    <!-- <input type="text" class="form-control form-control-sm" value="{{$budget->budget_type}}" name="budget_type"  id="budget_type" aria-describedby="budget_type" placeholder="Enter Your Budget Type"> -->
                                 </div>
                             </div>
                         </div>
