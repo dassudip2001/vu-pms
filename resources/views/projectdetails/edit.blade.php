@@ -60,29 +60,12 @@
                                                     aria-label=".form-select-sm example">
                                                     <option selected hidden>Select</option>
                                                     @foreach ($funding as $fund)
-                                                        <option value="{{ $fund->id }}">
+                                                        <option value="{{ $fund->id }}" {{$fund->id == $projects->funding_agency_id ? 'selected' : '' }}>
                                                             {{ $fund->agency_name }}
                                                         </option>
                                                     @endforeach
-                                                    {{-- @foreach ($funding as $funding_agency_id)
-                                                        <option value="{{ $funding_agency_id->id }}"
-                                                            {{ old('funding_agency_id', $funding_agency_id->agency_name) == $funding_agency_id->id ? 'selected' : '' }}>
-                                                            {{ $funding_agency_id->agency_name }}</option>
-                                                    @endforeach --}}
                                                 </select>
-                                                {{-- <select class="form-control" name="funding_agency_id"
-                                                    id="funding_agency_id">
-                                                    <option value="">---------Choose fund---------</option>
-                                                    @foreach ($funding as $fund)
-                                                        @if (old('fund') == $fund->id)
-                                                            <option value={{ $fund->id }} selected>
-                                                                {{ $fund->agency_name }}</option>
-                                                        @else
-                                                            <option value={{ $fund->id }}>{{ $fund->agency_name }}
-                                                            </option>
-                                                        @endif
-                                                    @endforeach
-                                                </select> --}}
+                                                
                                             </div>
                                         </div>
                                         <div class="col">
@@ -96,7 +79,7 @@
                                                             aria-label=".form-select-sm example">
                                                             <option selected hidden>Select</option>
                                                             @foreach ($createUser as $funding)
-                                                                <option value="{{ $funding->user_id }}" selected>
+                                                                <option value="{{ $funding->user_id }}" {{$funding->user_id == $projects->create_user_id ? 'selected' : '' }} >
                                                                     {{ $funding->name }} - {{ $funding->dept_name }}
                                                                 </option>
                                                             @endforeach
