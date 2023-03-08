@@ -23,8 +23,8 @@
                     data-bs-target="#exampleModal">
                     Add New
                 </button>
-                <a class=" mx-4 mt-2  float-end" href="{{ url('/admin/relesefund/download') }}"><i
-                        class="fa-solid fa-print"></i>Print All</a>
+                <a style="color: black;text-decoration:none;" class=" mx-4 mt-2  float-end"
+                    href="{{ url('/admin/relesefund/download') }}"><i class="fa-solid fa-print"></i>Print All</a>
                 <h6 class="mt-2">Relese Fund </h6>
 
                 <hr>
@@ -287,7 +287,7 @@
 
             </div>
             <div class="card-body">
-                @if (session('success'))
+                {{-- @if (session('success'))
                     <div class="alert alert-primary" role="alert">
                         {{ session('success') }}
                     </div>
@@ -300,7 +300,7 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif --}}
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead class="table-dark">
@@ -337,7 +337,8 @@
                                         <a href=" {{ url('/admin/relesefund/edit', $trans->id) }} ">
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </a>
-                                        <a href=" {{ url('/admin/relesefund/delete', $trans->id) }} ">
+                                        <a style="color: red"
+                                            href=" {{ url('/admin/relesefund/delete', $trans->id) }} ">
                                             <button type="submit">
                                                 <i class="fa-solid fa-trash">
                                                 </i>
@@ -345,7 +346,8 @@
                                         </a>
                                     </th>
                                     <th>
-                                        <a href=" {{ url('/admin/relesefund/pdfForm', $trans->id) }} ">
+                                        <a style="color: black"
+                                            href=" {{ url('/admin/relesefund/pdfForm', $trans->id) }} ">
                                             <i class="fa-regular fa-solid fa-print"></i>
                                         </a>
                                         <a href=" {{ url('/admin/relesefund/showall', $trans->id) }} ">

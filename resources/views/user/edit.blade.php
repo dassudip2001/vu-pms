@@ -48,6 +48,26 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="col">
+                                <!-- Faculty Department -->
+                                <div class="mb-6">
+                                    <label for="department_id">Faculty Department </label>
+                                    <br>
+                                    <select name="department_id" class="form-select form-select-sm "
+                                        aria-label="form-select-sm example">
+                                        <option selected hidden>Select Faculty Department
+                                        </option>
+                                        @foreach ($showDept as $department)
+                                            <option value="{{ $department->id }}" {{$department->id == $createUser->department->id ? 'selected' : ''}} >
+                                                {{ $department->dept_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('department_name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
 
                         </div>
 

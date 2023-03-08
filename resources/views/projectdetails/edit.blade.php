@@ -52,19 +52,37 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-6">
-                                                <label for="funding_agency">Funding Agency<span class="required"
-                                                        style="color: red;">*</span></label>
+                                                <label for="funding_agency">Funding Agency</label>
 
                                                 <br>
-                                                <select name="funding_agency_id" class="form-select form-select-sm"
+                                                <select name="funding_agency_id" id="funding_agency_id"
+                                                    class="form-select form-select-sm"
                                                     aria-label=".form-select-sm example">
                                                     <option selected hidden>Select</option>
                                                     @foreach ($funding as $fund)
-                                                        <option value=" {{ $fund->id }} " selected>
+                                                        <option value="{{ $fund->id }}">
                                                             {{ $fund->agency_name }}
                                                         </option>
                                                     @endforeach
+                                                    {{-- @foreach ($funding as $funding_agency_id)
+                                                        <option value="{{ $funding_agency_id->id }}"
+                                                            {{ old('funding_agency_id', $funding_agency_id->agency_name) == $funding_agency_id->id ? 'selected' : '' }}>
+                                                            {{ $funding_agency_id->agency_name }}</option>
+                                                    @endforeach --}}
                                                 </select>
+                                                {{-- <select class="form-control" name="funding_agency_id"
+                                                    id="funding_agency_id">
+                                                    <option value="">---------Choose fund---------</option>
+                                                    @foreach ($funding as $fund)
+                                                        @if (old('fund') == $fund->id)
+                                                            <option value={{ $fund->id }} selected>
+                                                                {{ $fund->agency_name }}</option>
+                                                        @else
+                                                            <option value={{ $fund->id }}>{{ $fund->agency_name }}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </select> --}}
                                             </div>
                                         </div>
                                         <div class="col">

@@ -24,8 +24,7 @@
                             <div class="row">
                                 <div class="col">
                                     {{-- select project --}}
-                                    <label for="faculty_designation">Select Project<span class="required"
-                                            style="color: red;">*</span></label>
+                                    <label for="faculty_designation">Select Project</label>
                                     <div>
 
                                         <select name="projec_fund_relese_id" class="form-select"
@@ -64,16 +63,19 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label for="faculty_designation">Payment Recive Method<span class="required"
-                                            style="color: red;">*</span></label>
+                                    <label for="faculty_designation">Payment Recive Method</label>
                                     <div>
 
                                         <select name="payment_method" class="form-select"
                                             aria-label="Default select example" id="selector"
-                                            value=" {{ $relese_funds->payment_method }} " onchange="yesnoCheck(this);">
+                                            onchange="yesnoCheck(this);">
                                             <option value="select" selected>Select payment mathod</option>
-                                            <option value="CHECK">Cheque</option>
-                                            <option value="NEFT">NEFT</option>
+                                            <option value="CHECK"
+                                                {{ $relese_funds->payment_method == 'CHECK' ? 'selected' : '' }}>Cheque
+                                            </option>
+                                            <option value="NEFT"
+                                                {{ $relese_funds->payment_method == 'NEFT' ? 'selected' : '' }}>NEFT
+                                            </option>
                                         </select>
                                     </div>
                                     <br>

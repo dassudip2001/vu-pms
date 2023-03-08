@@ -135,6 +135,8 @@ class CreateUserController extends Controller
     public function edit($id)
     {
         // if (Auth::user()->id == '1' || auth()->user()->id == $id + 1) {
+            $showDept= Department::all();
+
             $createUser = CreateUser::with(
                 [
                     'user' => function ($q) {
@@ -151,7 +153,7 @@ class CreateUserController extends Controller
                     }
                 ]
             )->find($id);
-            return view('user.edit', compact('createUser'));
+            return view('user.edit', compact('createUser','showDept'));
         // } else {
         //     return "You cannot edit details ";
         // }
@@ -180,10 +182,15 @@ class CreateUserController extends Controller
                 'fac_description' => 'required',
             ]);
             $fields = $request->only([
-                'name', 'password', 'fac_title', 'fac_designtion', 'fac_phone', 'fac_status', 'fac_description',
+                'name', 'password', 'fac_title', 'fac_designtion', 'fac_phone', 'fac_status', 'fac_description','department_id',
             ]);
             $fc = CreateUser::find($id)->faculty_id;
             $uc = CreateUser::find($id)->user_id;
+            // $dt=CreateUser::find($id)->department_id;
+            // department
+            // $department=Department::find($dt);
+            // $department->dept_name=$fields['dept_name'];
+            // $department->save();
             //            faculty Delete
             $faculty = Faculty::find($fc);
             //            $faculty->fac_code=$fields->fac_code;
@@ -199,7 +206,9 @@ class CreateUserController extends Controller
             $user->password = bcrypt($fields['password']);
             $user->save();
             //            create user delete
-            CreateUser::find($id)->save();
+            $updateCreateUser= CreateUser::find($id);
+            $updateCreateUser->department_id=$fields['department_id'];
+            $updateCreateUser->save();
             return redirect(route('admin.usercreate.index'))
                 ->with('success', 'User Update Successfully');
             //code...
